@@ -76,6 +76,8 @@ class Membership(models.Model):
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
     # seller=models.ForeignKey(Provider, on_delete=models.CASCADE, blank=True, null=True)
     date=models.DateField(null=True, blank=True)
+    fee=models.BooleanField()
+    user=models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description=models.TextField(null=True, blank=True)
     payment=models.ForeignKey(Payment, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField()
