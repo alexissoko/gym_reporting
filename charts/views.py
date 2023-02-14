@@ -31,7 +31,7 @@ def reporting_sales(request):
         mesh_to = request.GET.get("until")
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
-    sales = Sale.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
+    sales = Owner.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
     
     sold_objs = {}
     for sale in sales:
@@ -78,7 +78,7 @@ def reporting_providers(request):
         mesh_to = request.GET.get("until")
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
-    purchases = Purchase.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
+    purchases = Membership.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
 
     bought_objs = {}
     for buy in purchases:
@@ -101,7 +101,7 @@ def reporting_providers(request):
 
 
     mydict= {
-        'inputs': Input.objects.all(),
+        'owner': Owner.objects.all(),
         'bought_objs': bought_objs,
         "df_labels" : df_labels,
         "labels" : list(all_data.keys()),
