@@ -24,7 +24,7 @@ class Sport(models.Model):
 
 
 # Create your models here.
-class ClassSport(models.Model):
+class Activity(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -53,6 +53,9 @@ class User(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, blank=True, null=True
     )
+    activity = models.ForeignKey(
+        Activity, on_delete=models.CASCADE, blank=True, null=True
+    ) 
     description = models.TextField()
 
     def __str__(self) -> str:
@@ -85,7 +88,7 @@ class Payment(models.Model):
     # memebership=models.ForeignKey(Membership, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.customer
+        return self.customer + self.user
 
 
 class Membership(models.Model):
