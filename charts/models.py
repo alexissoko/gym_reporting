@@ -24,7 +24,7 @@ class Sport(models.Model):
 
 
 # Create your models here.
-class ClassSport(models.Model):
+class Activity(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -53,6 +53,9 @@ class User(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, blank=True, null=True
     )
+    activity = models.ForeignKey(
+        Activity, on_delete=models.CASCADE, blank=True, null=True
+    ) 
     description = models.TextField()
 
     def __str__(self) -> str:
@@ -74,35 +77,30 @@ class User(models.Model):
 #         return self.invoice.name
 
 
-class Payment(models.Model):
-    # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
-    payment_type = models.CharField(max_length=100)
-    customer = models.ForeignKey(
-        Customer, on_delete=models.CASCADE, blank=True, null=True
-    )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
-    # memebership=models.ForeignKey(Membership, on_delete=models.CASCADE, blank=True, null=True)
-
-    def __str__(self) -> str:
-        return self.customer
-
-
 class Membership(models.Model):
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
     # seller=models.ForeignKey(Provider, on_delete=models.CASCADE, blank=True, null=True)
+    activity = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     date = models.DateField(null=True, blank=True)
     fee = models.BooleanField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
-    payment = models.ForeignKey(
-        Payment, on_delete=models.CASCADE, blank=True, null=True
-    )
     quantity = models.IntegerField()
     price = models.IntegerField()
 
     def __str__(self) -> str:
         return self.invoice.name
 
+
+
+class Payment(models.Model):
+    # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
+    payment_type = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
+    memebership=models.ForeignKey(Membership, on_delete=models.CASCADE, blank=True, null=True)
+    
+    def __str__(self) -> str:
+        return self.user.name + self.user.customername + self.memebership.activity.name
 
 # Create your models here.
