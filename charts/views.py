@@ -15,7 +15,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 # from chartjs.views.lines import BaseLineChartView
-
+# from chartjs.views.lines import BaseLineChartView
 
 
 def home(request):
