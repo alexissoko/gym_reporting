@@ -117,7 +117,7 @@ class Payment(models.Model):
     price = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.user.name.replace(" ", "") + "_" + self.membership.activity.name
+        return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name
 
 
 # Create your models here.
