@@ -65,7 +65,7 @@ class Membership(models.Model):
     # seller=models.ForeignKey(Provider, on_delete=models.CASCADE, blank=True, null=True)
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, blank=True, null=True)
     date = models.DateField(null=True, blank=True, auto_now_add=True)
-    fee = models.BooleanField(label="Inscripcion paga")
+    fee = models.BooleanField(verbose_name='Inscripcion paga')
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     quantity = models.IntegerField()
