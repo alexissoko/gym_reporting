@@ -1,5 +1,5 @@
 DONE # Payment model should not allow to match none related User - Customer realtionship
 # Payment element in Memership model requieres more detail on date and sport and user
-# Paymeny model __str__ method should be more verbose
+DONE # Paymeny model __str__ method should be more verbose
 # Clean non required quantity/price/amount elements in all 
 # Research Fixture method for test data loading at beggning of project
