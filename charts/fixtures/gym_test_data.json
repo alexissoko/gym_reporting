@@ -1,0 +1,137 @@
+[
+    {
+      "model": "charts.owner",
+      "pk": 1,
+      "fields": {
+        "name": "Moni",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.owner",
+      "pk": 2,
+      "fields": {
+        "name": "Vani",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.owner",
+      "pk": 3,
+      "fields": {
+        "name": "Board",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.sport",
+      "pk": 1,
+      "fields": {
+        "name": "Natacion",
+        "description": "None",
+        "owner": "Vani"
+      }
+    },
+    {
+      "model": "charts.sport",
+      "pk": 2,
+      "fields": {
+        "name": "Nenas",
+        "description": "None",
+        "owner": "Moni"
+      }
+    },
+    {
+      "model": "charts.sport",
+      "pk": 3,
+      "fields": {
+        "name": "Pilates",
+        "description": "None",
+        "owner": "Board"
+      }
+    },
+    {
+      "model": "charts.activity",
+      "pk": 1,
+      "fields": {
+        "name": "PilatesSenior",
+        "description": "None",
+        "quota": 20,
+        "sport": "Pilates"
+      }
+    },
+    {
+      "model": "charts.activity",
+      "pk": 2,
+      "fields": {
+        "name": "NenasJunior",
+        "description": "None",
+        "quota": 20,
+        "sport": "Nenas"
+      }
+    },
+    {
+      "model": "charts.activity",
+      "pk": 3,
+      "fields": {
+        "name": "NatacionSenior",
+        "description": "None",
+        "quota": 20,
+        "sport": "Natacion"
+      }
+    },
+    {
+      "model": "charts.customer",
+      "pk": 1,
+      "fields": {
+        "name": "John Doe",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.customer",
+      "pk": 2,
+      "fields": {
+        "name": "Richard Leeson",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.customer",
+      "pk": 3,
+      "fields": {
+        "name": "Emmanuel Kant jr",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.user",
+      "pk": 1,
+      "fields": {
+        "name": "Emily Doe",
+        "customer": "John Doe",
+        "activity": "NenasJunior",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.user",
+      "pk": 2,
+      "fields": {
+        "name": "Richard Leeson",
+        "customer": "Richard Leeson",
+        "activity": "PilatesSenior",
+        "description": "None"
+      }
+    },
+    {
+      "model": "charts.user",
+      "pk": 3,
+      "fields": {
+        "name": "Emmanuel Kant",
+        "customer": "Emmanuel Kant jr",
+        "activity": "NatacionSenior",
+        "description": "None"
+      }
+    }
+  ]

@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 class Owner(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateField(null=True, blank=True)
+    date = models.DateField(auto_now_add=True)
     description = models.TextField(null=True, blank=True)
-    total = models.IntegerField(blank=True)
+    # total = models.IntegerField(blank=True)
 
     def __str__(self) -> str:
         return self.name
@@ -14,9 +14,9 @@ class Owner(models.Model):
 # Create your models here.
 class Sport(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateField(null=True, blank=True)
+    date = models.DateField(auto_now_add=True)
     description = models.TextField(null=True, blank=True)
-    price = models.IntegerField(blank=True)
+    # price = models.IntegerField(blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
@@ -26,7 +26,7 @@ class Sport(models.Model):
 # Create your models here.
 class Activity(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateField(null=True, blank=True)
+    date = models.DateField(auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     quota = models.IntegerField(blank=True)
     # price=models.ForeignKey(Caja, on_delete=models.CASCADE, blank=True, null=True)
@@ -39,7 +39,7 @@ class Activity(models.Model):
 # Create your models here.
 class Customer(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateField(null=True, blank=True)
+    date = models.DateField(auto_now_add=True),
     description = models.TextField()
 
     def __str__(self) -> str:
