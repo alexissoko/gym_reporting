@@ -29,6 +29,7 @@ class Activity(models.Model):
     description = models.TextField(null=True, blank=True)
     quota = models.IntegerField(blank=True)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, blank=True, null=True)
+    price = models.IntegerField()
 
     def __str__(self) -> str:
         return self.name
@@ -69,7 +70,7 @@ class Membership(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     quantity = models.IntegerField()
-    price = models.IntegerField()
+    price = models.ForeignKey(Activity.price, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.invoice.name
