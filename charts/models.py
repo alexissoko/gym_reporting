@@ -73,7 +73,7 @@ class Membership(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.invoice.name
+        return self.activity.name +'_'+ self.user.name.replace(' ','')
 
 
 class Payment(models.Model):
@@ -81,14 +81,14 @@ class Payment(models.Model):
     payment_type = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
-    memebership = models.ForeignKey(
+    membership = models.ForeignKey(
         Membership, on_delete=models.CASCADE, blank=True, null=True
     )
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.user.name + self.user.customername + self.memebership.activity.name
+        return self.user.name + self.user.customername + self.membership.activity.name
 
 
 # Create your models here.
