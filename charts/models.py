@@ -70,7 +70,7 @@ class Membership(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     quantity = models.IntegerField()
-    price = models.ForeignKey(Activity.price, on_delete=models.CASCADE, blank=True, null=True)
+    price = activity.price
 
     def __str__(self) -> str:
         return self.invoice.name
