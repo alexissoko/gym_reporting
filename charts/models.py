@@ -102,7 +102,7 @@ class TypePayment(models.Model):
     # price = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.user.name + self.user.customername + self.membership.activity.name
+        return self.payment_type
 
 
 class Payment(models.Model):
