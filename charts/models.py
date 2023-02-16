@@ -16,7 +16,6 @@ class Sport(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
-    # price = models.IntegerField(blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
@@ -29,7 +28,6 @@ class Activity(models.Model):
     date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     quota = models.IntegerField(blank=True)
-    # price=models.ForeignKey(Caja, on_delete=models.CASCADE, blank=True, null=True)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
