@@ -1,4 +1,16 @@
 from django.db import models
+from django import forms
+
+PAYMENT_CHOICES = (
+   ('F', "efectivo"),
+   ('T', 'transfer')
+    )
+
+SAFEBOX_CHOICES = (
+   ('M', "Moni"),
+   ('V', 'Vani'),
+   ('B', "Board")
+    )
 
 # Create your models here.
 class Owner(models.Model):
@@ -76,6 +88,22 @@ class Membership(models.Model):
         return self.activity.name +'_'+ self.user.name.replace(' ','')
 
 
+class TypePayment(models.Model):
+
+    # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
+    payment_type = forms.ChoiceField(choices=PAYMENT_CHOICES, widget=forms.RadioSelect())
+    # money_owner = models.ChoiceField(choices=SAFEBOX_CHOICES, widget=forms.RadioSelect())
+    receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
+    membership = models.ForeignKey(
+        Membership, on_delete=models.CASCADE, blank=True, null=True
+    )
+    description = models.TextField(null=True, blank=True)
+    price = models.IntegerField()
+
+    def __str__(self) -> str:
+        return self.user.name + self.user.customername + self.membership.activity.name
+
+
 class Payment(models.Model):
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
     payment_type = models.CharField(max_length=100)
@@ -88,7 +116,7 @@ class Payment(models.Model):
     price = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.user.name + self.user.customername + self.membership.activity.name
+        return self.user.name + self.customer.name + self.membership.activity.name
 
 
 # Create your models here.
