@@ -2,7 +2,7 @@ DONE # Payment model should not allow to match none related User - Customer real
 DONE # Paymeny model __str__ method should be more verbose
 DONE # Clean non required quantity/price/amount elements in all 
 DONE # Research Fixture method for test data loading at beggning of project
-# Traccion español
+# Traduccion español
 # Payment element in Memership model requieres more detail on date and sport and user
 # fix main menu hamburguer in mobile view
 # Improve payment options(add payment methods)
