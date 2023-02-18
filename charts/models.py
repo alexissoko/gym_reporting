@@ -1,5 +1,7 @@
 from django.db import models
 from django import forms
+from django.utils import timezone
+
 
 PAYMENT_CHOICES = (
    ('F', "efectivo"),
@@ -77,7 +79,7 @@ class Membership(models.Model):
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
     # seller=models.ForeignKey(Provider, on_delete=models.CASCADE, blank=True, null=True)
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, blank=True, null=True)
-    date = models.DateField(null=True, blank=True, auto_now_add=True)
+    date = models.DateField(default=timezone.now)
     fee = models.BooleanField(verbose_name='Inscripcion paga')
     price = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -85,7 +87,7 @@ class Membership(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.activity.name +'_'+ self.user.name.replace(' ','') + "_" + str(salf.date)
+        return self.activity.name +'_'+ self.user.name.replace(' ','') + "_" + str(self.date)
 
 
 class TypePayment(models.Model):
