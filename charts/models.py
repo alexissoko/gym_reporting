@@ -110,7 +110,7 @@ class Payment(models.Model):
     date = models.DateField(auto_now_add=True, null=True)
     payment_type = models.ForeignKey(TypePayment, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    # receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
+    receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
 
