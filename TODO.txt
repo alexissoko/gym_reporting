@@ -4,11 +4,11 @@ DONE # Clean non required quantity/price/amount elements in all
 DONE # Research Fixture method for test data loading at beggning of project
 DONE # Agregar receptor de pago en Payment model
 DONE # Payment element in Memership model requieres more detail on date and sport and user
-
-# Improve payment options(add payment methods)
-# fix main menu hamburguer in mobile view
-# Translate words to Spanish(every field)
+DONE # Improve payment options(add payment methods)
+DONE # fix main menu hamburguer in mobile view
 
 # Generar comprobante de pago
 
+# report spreadhseet
+# Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.
