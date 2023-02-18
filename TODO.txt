@@ -8,6 +8,6 @@ DONE # Research Fixture method for test data loading at beggning of project
 # Translate words to Spanish(every field)
 
 # Generar comprobante de pago
-# Agregar receptor de pago
+# Agregar receptor de pago en Payment model
 
 # 10 de Marzo Demostracion.
