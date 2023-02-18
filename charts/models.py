@@ -85,7 +85,7 @@ class Membership(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.activity.name +'_'+ self.user.name.replace(' ','')
+        return self.activity.name +'_'+ self.user.name.replace(' ','') + "_" + str(salf.date)
 
 
 class TypePayment(models.Model):
