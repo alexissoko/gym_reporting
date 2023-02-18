@@ -84,7 +84,15 @@ class Membership(models.Model):
     price = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=1)
+
+    def get_quantity(self):
+        to_be_returned = self.quantity
+        self.quantity += 1
+        return to_be_returned
+    
+    def set_quantity(self):
+        self.quantity += 1
 
     def __str__(self) -> str:
         return self.activity.name +'_'+ self.user.name.replace(' ','') + "_" + str(self.date)
@@ -101,7 +109,7 @@ class TypePayment(models.Model):
         Membership, on_delete=models.CASCADE, blank=True, null=True
     )
     description = models.TextField(null=True, blank=True)
-    # price = models.IntegerField()
+    membership.quantity = 1
 
     def __str__(self) -> str:
         return self.payment_type
@@ -115,6 +123,10 @@ class Payment(models.Model):
     receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
+    # details = payment_type.get_quantity()
+    # breakpoint()
+    # details = payment_type.set_quantity()
+    # breakpoint()
 
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date)

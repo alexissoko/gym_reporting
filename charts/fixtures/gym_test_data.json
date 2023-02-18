@@ -172,7 +172,17 @@
       "model": "charts.typepayment",
       "pk": 1,
       "fields": {
-        "payment_type": 1,
+        "payment_type": "transfer",
+        "receiver": 2,
+        "membership": 1,
+        "description":"None"
+      }
+    },
+    {
+      "model": "charts.typepayment",
+      "pk": 2,
+      "fields": {
+        "payment_type": "cash",
         "receiver": 2,
         "membership": 1,
         "description":"None"
@@ -183,6 +193,15 @@
       "pk": 1,
       "fields": {
         "payment_type": 1,
+        "user": 2,
+        "price": 2000
+      }
+    },
+    {
+      "model": "charts.payment",
+      "pk": 1,
+      "fields": {
+        "payment_type": 2,
         "user": 2,
         "price": 2000
       }
