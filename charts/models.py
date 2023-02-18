@@ -107,17 +107,15 @@ class TypePayment(models.Model):
 
 class Payment(models.Model):
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True, null=True)
     payment_type = models.ForeignKey(TypePayment, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     # receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
-    # membership = models.ForeignKey(
-    #     Membership, on_delete=models.CASCADE, blank=True, null=True
-    # )
-    # description = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name
+        return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name #+ "_" + self.date
 
 
 # Create your models here.
