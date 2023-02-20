@@ -12,6 +12,8 @@ ON PROGRESS:
 # report spreadhseet # add more details to reporting
 
 TODO:
+# Add security reporting(login required)
+# Reporting date filter(calendar buttons not working)(iconos calendario no funcionan)
 # Generar comprobante de pago
 # Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.
