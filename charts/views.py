@@ -13,8 +13,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from slick_reporting.views import SlickReportViewBase, SlickReportView
-from slick_reporting.fields import SlickReportField
+from slick_reporting.views import SlickReportViewBase, SlickReportView as OriginalReportView
+from slick_reporting.fields import SlickReportField, Sum
 
 # from chartjs.views.lines import BaseLineChartView
 # from chartjs.views.lines import BaseLineChartView
@@ -112,7 +112,7 @@ def reporting_providers(request):
     }
     return render(request, 'providers.html', context=mydict)
 
-class SimpleListReport(SlickReportView):
+class SimpleListReport(OriginalReportView):
     """
     Let's start by creating a page where we can filter our report_model record / dataset.
     Slick Reporting come with `SlickReportView` CBV.
@@ -130,3 +130,43 @@ class SimpleListReport(SlickReportView):
     # fields on the report model ... surprise !
     columns = ['date', 'payment_type', 'user', 'receiver', 'description', 'price']
 
+class GroupByViewActivity(OriginalReportView):
+    """
+    We can have multiple charts, and multiple Calculation fields
+    """
+
+    report_model = Sport
+    date_field = 'date'
+    group_by = 'owner'
+    columns = ['name',
+               SlickReportField.create(Sum, 'owner', name='owner__sum', verbose_name='owner total'),
+               # SlickReportField.create(Sum, 'value', name='value__sum', verbose_name=_('Value $')),
+               'description',
+               ]
+
+    chart_settings = [
+        {'type': 'pie',
+         'engine_name': 'highcharts',
+         'data_source': ['owner__sum'],
+         'title_source': ['name'],
+         'title': 'Pie Chart (Quantities) Highcharts'
+         },
+        {'type': 'pie',
+         'engine_name': 'chartsjs',
+         'data_source': ['owner__sum'],
+         'title_source': ['name'],
+         'title': 'Pie Chart (Quantities) ChartsJs'
+         },
+        {'type': 'bar',
+         'engine_name': 'highcharts',
+         'data_source': ['owner__sum'],
+         'title_source': ['name'],
+         'title': 'Column Chart (Values)'
+         },
+        {'type': 'bar',
+         'engine_name': 'chartsjs',
+         'data_source': ['owner__sum'],
+         'title_source': ['name'],
+         'title': 'Column Chart (Values)'
+         },
+    ]

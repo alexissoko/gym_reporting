@@ -31,7 +31,6 @@ class Sport(models.Model):
     date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
-
     def __str__(self) -> str:
         return self.name
 

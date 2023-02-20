@@ -21,6 +21,7 @@ from charts import views
 urlpatterns = [
     path('admin/', admin.site.urls, name='control'),
     path('no-group-by/', views.SimpleListReport.as_view(), name='simple-filer'),
+    path('quota-group-by/', views.GroupByViewActivity.as_view(), name='quota-filer'),
 
     # how to reference inside admin side
     path('', include('charts.urls'))
