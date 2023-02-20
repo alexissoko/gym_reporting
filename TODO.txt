@@ -1,14 +1,17 @@
-DONE # Payment model should not allow to match none related User - Customer realtionship
-DONE # Paymeny model __str__ method should be more verbose
-DONE # Clean non required quantity/price/amount elements in all 
-DONE # Research Fixture method for test data loading at beggning of project
-DONE # Agregar receptor de pago en Payment model
-DONE # Payment element in Memership model requieres more detail on date and sport and user
-DONE # Improve payment options(add payment methods)
-DONE # fix main menu hamburguer in mobile view
+DONE:
+# Payment model should not allow to match none related User - Customer realtionship
+# Paymeny model __str__ method should be more verbose
+# Clean non required quantity/price/amount elements in all 
+# Research Fixture method for test data loading at beggning of project
+# Agregar receptor de pago en Payment model
+# Payment element in Memership model requieres more detail on date and sport and user
+# Improve payment options(add payment methods)
+# fix main menu hamburguer in mobile view
 
+ON PROGRESS:
+# report spreadhseet # add more details to reporting
+
+TODO:
 # Generar comprobante de pago
-
-# report spreadhseet
 # Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.

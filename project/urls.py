@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from charts import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='control'),
+    path('no-group-by/', views.SimpleListReport.as_view(), name='simple-filer'),
+
     # how to reference inside admin side
-    path('', include('charts.urls')), 
+    path('', include('charts.urls'))
+    
 ]

@@ -36,6 +36,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'charts',
+    'slick_reporting',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,6 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 import os
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

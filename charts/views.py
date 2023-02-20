@@ -13,6 +13,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from slick_reporting.views import SlickReportViewBase, SlickReportView
+from slick_reporting.fields import SlickReportField
 
 # from chartjs.views.lines import BaseLineChartView
 # from chartjs.views.lines import BaseLineChartView
@@ -109,4 +111,22 @@ def reporting_providers(request):
     
     }
     return render(request, 'providers.html', context=mydict)
+
+class SimpleListReport(SlickReportView):
+    """
+    Let's start by creating a page where we can filter our report_model record / dataset.
+    Slick Reporting come with `SlickReportView` CBV.
+
+    By adding this view to your urls.py
+        path('', views.SimpleListReport.as_view()),
+    You'll see a results page as the shown below
+    """
+    report_model = Payment
+    # the model containing the data we want to analyze
+
+    date_field = 'date'
+    # a date/datetime field on the report model
+
+    # fields on the report model ... surprise !
+    columns = ['date', 'payment_type', 'user', 'receiver', 'description', 'price']
 
