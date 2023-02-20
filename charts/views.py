@@ -13,10 +13,38 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from slick_reporting.views import SlickReportView
+from slick_reporting.fields import SlickReportField
 
-# from chartjs.views.lines import BaseLineChartView
-# from chartjs.views.lines import BaseLineChartView
 
+class SimpleListReport(SlickReportView):
+    
+    report_model = Payment
+    # report_model = SalesLineTransaction
+    # the model containing the data we want to analyze
+
+    date_field = 'date'
+    # a date/datetime field on the report model
+
+    # fields on the report model ... surprise !
+    columns = ['date', 'payment_type', 'user', 'receiver', 'description', 'price']
+
+
+class TimeSeriesWithoutGroupBy(SlickReportView):
+    
+    report_model = Payment
+    date_field = 'date'
+    columns = ['date', 'payment_type', 'user', 'receiver', 'description', 'price']
+
+    def format_row(self, row_obj):
+        """
+        A hook to format each row . This method gets called on each row in the results.
+        :param row_obj: a dict representing a single row in the results
+        :return: A dict representing a single row in the results
+        """
+        row_obj['date'] = date(row_obj['date'], 'd-m-y H:i')
+
+        return row_obj
 
 def home(request):
     return render(request, 'welcome.html')
@@ -110,3 +138,26 @@ def reporting_providers(request):
     }
     return render(request, 'providers.html', context=mydict)
 
+from django.db.models import Sum
+from slick_reporting.views import SlickReportView
+from slick_reporting.fields import SlickReportField
+from .models import Payment
+from django.utils.translation import gettext_lazy as _
+
+class TotalProductSales(SlickReportView):
+
+    report_model = Payment
+    date_field = 'date'
+    group_by = 'payment_type'
+    columns = ['payment_type',
+                SlickReportField.create(Sum, 'price') ,
+                SlickReportField.create(Sum, 'price', name='sum__value') ]
+
+    chart_settings = [{
+        'type': 'column',
+        'data_source': ['sum__value'],
+        'plot_total': False,
+        'title_source': 'title',
+        'title': _('Detailed Columns'),
+
+    }, ]

@@ -9,18 +9,23 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
+ 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 other_BASE_DIR = Path(__file__).resolve()
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
-print("BASE_DIR")
-print(BASE_DIR)
-print(other_BASE_DIR)
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+LANGUAGE_CODE = 'es'  # or other appropriate code
+LANGUAGES = [
+    ('en-us', _('English')),
+    ('es', _('Spanish')),
+]
+USE_I18N = True
+USE_L10N = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-cxw#+ws0md9u0$tc8#atql!duc1d0+u*ggktr76_a$icwc*vp!'
@@ -35,6 +40,9 @@ ALLOWED_HOSTS = []
 # LOGIN_URL = "project/login"
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    # 'crispy_bootstrap',
+    # 'slick_reporting',
     'charts',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,9 +51,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
