@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from charts import views
+from django.contrib.auth.decorators import login_required
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='control'),
-    path('no-group-by/', views.SimpleListReport.as_view(), name='simple-filer'),
-    path('quota-group-by/', views.GroupByViewActivity.as_view(), name='quota-filer'),
+    path('no-group-by/', login_required(views.SimpleListReport.as_view()), name='simple-filer'),
+    path('quota-group-by/', login_required(views.GroupByViewSport.as_view()), name='quota-filer'),
+    path('activities/', login_required(views.ActivitiesCrossTab.as_view()), name='activities-filer'),
 
     # how to reference inside admin side
     path('', include('charts.urls'))

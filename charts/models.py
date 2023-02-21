@@ -38,7 +38,7 @@ class Sport(models.Model):
 # Create your models here.
 class Activity(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateField(null=True, blank=True, auto_now_add=True)
+    date = models.DateField(default=timezone.now)
     description = models.TextField(null=True, blank=True)
     quota = models.IntegerField(blank=True)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, blank=True, null=True)

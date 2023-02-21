@@ -112,6 +112,7 @@ def reporting_providers(request):
     }
     return render(request, 'providers.html', context=mydict)
 
+
 class SimpleListReport(OriginalReportView):
     """
     Let's start by creating a page where we can filter our report_model record / dataset.
@@ -130,7 +131,27 @@ class SimpleListReport(OriginalReportView):
     # fields on the report model ... surprise !
     columns = ['date', 'payment_type', 'user', 'receiver', 'description', 'price']
 
-class GroupByViewActivity(OriginalReportView):
+    
+class ActivitiesCrossTab(OriginalReportView):
+    
+    report_model = Activity
+    date_field = 'date'
+    # group_by = 'sport'
+    columns = ['date','name' ,'description', 'quota', 'sport']
+    redirect_field_name = 'control'
+
+    # a date/datetime field on the report model
+
+    # To activate Crosstab
+    #crosstab_model = 'sport'
+    # we corsstab on a foreignkey field
+
+    #crosstab_columns = [SlickReportField.create(Sum, 'quota', name='quota__sum', verbose_name='Quota')
+                        # To be computed for each chosen entity in the crosstab.
+                        # ]
+
+                
+class GroupByViewSport(OriginalReportView):
     """
     We can have multiple charts, and multiple Calculation fields
     """

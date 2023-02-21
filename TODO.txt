@@ -7,12 +7,13 @@ DONE:
 # Payment element in Memership model requieres more detail on date and sport and user
 # Improve payment options(add payment methods)
 # fix main menu hamburguer in mobile view
+# report spreadhseet # add more details to reporting
+# Add security reporting(login required)
 
 ON PROGRESS:
-# report spreadhseet # add more details to reporting
 
 TODO:
-# Add security reporting(login required)
+# ADd login requiered message when not logged in
 # Reporting date filter(calendar buttons not working)(iconos calendario no funcionan)
 # Generar comprobante de pago
 # Translate words to Spanish(every field)
