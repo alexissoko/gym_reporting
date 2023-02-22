@@ -33,14 +33,14 @@ def reporting_sales(request):
         mesh_to = request.GET.get("until")
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
-    sales = Owner.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
+    sales = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
     
     sold_objs = {}
     for sale in sales:
-        if sale.invoice.name not in sold_objs:
-            sold_objs[sale.invoice.name] = sale.invoice.id
+        if sale.name not in sold_objs:
+            sold_objs[sale.name] = sale.invoice.id
     
-    all_data = {prod.invoice.name: {} for prod in sales}
+    all_data = {prod.name: {} for prod in sales}
     df_labels = sorted([x[0].strftime('%Y-%m-%d') for x in sales.values_list("date").distinct()])
 
     for sale in sales:

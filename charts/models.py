@@ -53,7 +53,6 @@ class Customer(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField()
-    status = models.BooleanField(verbose_name='Active', default=True)
     
     def __str__(self) -> str:
         return self.name
@@ -70,6 +69,7 @@ class User(models.Model):
         Activity, on_delete=models.CASCADE, blank=True, null=True
     )
     description = models.TextField()
+    status = models.BooleanField(verbose_name='Active', default=True)
 
     def __str__(self) -> str:
         return self.name
