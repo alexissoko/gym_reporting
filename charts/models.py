@@ -53,7 +53,8 @@ class Customer(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField()
-
+    status = models.BooleanField(verbose_name='Active', default=True)
+    
     def __str__(self) -> str:
         return self.name
 
@@ -79,7 +80,7 @@ class Membership(models.Model):
     # seller=models.ForeignKey(Provider, on_delete=models.CASCADE, blank=True, null=True)
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE, blank=True, null=True)
     date = models.DateField(default=timezone.now)
-    fee = models.BooleanField(verbose_name='Inscripcion paga')
+    fee = models.BooleanField(verbose_name='Inscription')
     price = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
