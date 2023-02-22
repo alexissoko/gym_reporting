@@ -33,33 +33,33 @@ def reporting_sales(request):
         mesh_to = request.GET.get("until")
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
-    sales = User.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
+    payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
     
     sold_objs = {}
-    for sale in sales:
-        if sale.name not in sold_objs:
-            sold_objs[sale.name] = sale.invoice.id
+    for sale in payments:
+        if sale.user.id not in sold_objs:
+            sold_objs[sale.user.id] = sale.user.name
     
-    all_data = {prod.name: {} for prod in sales}
-    df_labels = sorted([x[0].strftime('%Y-%m-%d') for x in sales.values_list("date").distinct()])
+    all_customers = {pay.user.customer.name: {} for pay in payments}
+    df_labels = sorted([x[0].strftime('%Y-%m-%d') for x in payments.values_list("date").distinct()])
 
-    for sale in sales:
-        all_data[sale.invoice.name][sale.date.strftime('%Y-%m-%d')] = sale.quantity
+    for pay in payments:
+        all_customers[pay.user.customer.name][pay.date.strftime('%Y-%m-%d')] = pay.price
     
     for label in df_labels:
-        for k, v in all_data.items():
+        for k, v in all_customers.items():
             if label not in v:
-                all_data[k][label] = 0
+                all_customers[k][label] = 0
     
-    for k,v in all_data.items():
-        all_data[k] = [all_data[k][x] for x in sorted(all_data[k])]
+    for k,v in all_customers.items():
+        all_customers[k] = [all_customers[k][x] for x in sorted(all_customers[k])]
 
 
     mydict= {
         'sold_objs':sold_objs,
         "df_labels" : df_labels,
-        "labels" : list(all_data.keys()),
-        "values" : list(all_data.values()),
+        "labels" : list(all_customers.keys()),
+        "values" : list(all_customers.values()),
     
     }
     return render(request, 'sales.html', context=mydict)
