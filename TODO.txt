@@ -21,3 +21,4 @@ TODO:
 # Generar comprobante de pago
 # Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.
+#cambiar opcion "to date" en sales
