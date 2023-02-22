@@ -156,37 +156,39 @@ class GroupByViewSport(OriginalReportView):
     We can have multiple charts, and multiple Calculation fields
     """
 
-    report_model = Sport
+    report_model = Activity
     date_field = 'date'
-    group_by = 'owner'
+    group_by = 'name'
     columns = ['name',
-               SlickReportField.create(Sum, 'owner', name='owner__sum', verbose_name='owner total'),
+               SlickReportField.create(Sum, 'quota', name='quota__sum', verbose_name='quota total'),
                # SlickReportField.create(Sum, 'value', name='value__sum', verbose_name=_('Value $')),
                'description',
+               'sport',
+               'date'
                ]
 
     chart_settings = [
         {'type': 'pie',
          'engine_name': 'highcharts',
-         'data_source': ['owner__sum'],
+         'data_source': ['quota__sum'],
          'title_source': ['name'],
          'title': 'Pie Chart (Quantities) Highcharts'
          },
         {'type': 'pie',
          'engine_name': 'chartsjs',
-         'data_source': ['owner__sum'],
+         'data_source': ['quota__sum'],
          'title_source': ['name'],
          'title': 'Pie Chart (Quantities) ChartsJs'
          },
         {'type': 'bar',
          'engine_name': 'highcharts',
-         'data_source': ['owner__sum'],
+         'data_source': ['quota__sum'],
          'title_source': ['name'],
          'title': 'Column Chart (Values)'
          },
         {'type': 'bar',
          'engine_name': 'chartsjs',
-         'data_source': ['owner__sum'],
+         'data_source': ['quota__sum'],
          'title_source': ['name'],
          'title': 'Column Chart (Values)'
          },
