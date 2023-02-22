@@ -9,6 +9,7 @@ DONE:
 # fix main menu hamburguer in mobile view
 # report spreadhseet # add more details to reporting
 # Add security reporting(login required)
+# ADd login requiered message when not logged in
 
 ON PROGRESS:
 #
@@ -16,7 +17,6 @@ ON PROGRESS:
 TODO:
 # Clientes visualizar meses abonados y memebresia
 # Pagos visualizar tipo de pagos realizados por mes para balance
-# ADd login requiered message when not logged in
 # Reporting date filter(calendar buttons not working)(iconos calendario no funcionan)
 # Generar comprobante de pago
 # Translate words to Spanish(every field)

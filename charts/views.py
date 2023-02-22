@@ -33,7 +33,7 @@ def reporting_sales(request):
         mesh_to = request.GET.get("until")
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
-    sales = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
+    sales = User.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
     
     sold_objs = {}
     for sale in sales:

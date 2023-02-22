@@ -31,6 +31,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGIN_URL="/"
+#LOGIN_URL="/admin/login/"
+LOGIN_REDIRECT_URL="/"
+LOGOUT_REDIRECT_URL="/"
 # Application definition
 # LOGIN_URL = "project/login"
 
