@@ -128,7 +128,7 @@ class Payment(models.Model):
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
     # TODO: 12 quotas generator funcitonality
-    quota_number = models.ChoiceField(choices=MONTHLY_QUOTAS)
+    quota_number = forms.ChoiceField(choices=MONTHLY_QUOTAS)
 
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date)
