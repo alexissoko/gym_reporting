@@ -10,7 +10,7 @@ PAYMENT_CHOICES = (
     )
 
 
-MONTHLY_QUOTAS = {i:calendar.month_name[i] for i in range(13)}
+MONTHLY_QUOTAS = {str(i):calendar.month_name[i] for i in range(13)}
 
 SAFEBOX_CHOICES = (
    ('M', "Moni"),
