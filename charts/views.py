@@ -28,6 +28,7 @@ def reporting_sales(request):
     if request.GET.get("begin"):
         mesh_from = request.GET.get("begin")
     else:
+        # TODO: default current year fix here
         mesh_from = "2000-01-01"
     if request.GET.get("until"):
         mesh_to = request.GET.get("until")

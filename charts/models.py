@@ -1,12 +1,16 @@
 from django.db import models
 from django import forms
 from django.utils import timezone
+import calendar
 
 
 PAYMENT_CHOICES = (
    ('F', "efectivo"),
    ('T', 'transfer')
     )
+
+
+MONTHLY_QUOTAS = {i:calendar.month_name[i] for i in range(13)}
 
 SAFEBOX_CHOICES = (
    ('M', "Moni"),
@@ -123,10 +127,8 @@ class Payment(models.Model):
     receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
-    # details = payment_type.get_quantity()
-    # breakpoint()
-    # details = payment_type.set_quantity()
-    # breakpoint()
+    # TODO: 12 quotas generator funcitonality
+    quota_number = models.IntegerField(choices=MONTHLY_QUOTAS)
 
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date)

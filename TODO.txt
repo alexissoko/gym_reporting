@@ -10,14 +10,16 @@ DONE:
 # report spreadhseet # add more details to reporting
 # Add security reporting(login required)
 # ADd login requiered message when not logged in
+# Slicke repoting no longer used - Reporting date filter(calendar buttons not working)(iconos calendario no funcionan)
 
 ON PROGRESS:
 #
 
 TODO:
-# Clientes visualizar meses abonados y memebresia
+# improve Payment view(User monthly quotas and membership payments balace)
+# improve Balance de cobros (amounts recieved by different partners)
+# Improve sports activites availabilities for new members/Users
 # Pagos visualizar tipo de pagos realizados por mes para balance
-# Reporting date filter(calendar buttons not working)(iconos calendario no funcionan)
 # Generar comprobante de pago
 # Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.
