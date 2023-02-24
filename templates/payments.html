@@ -57,30 +57,9 @@
             <div class="col-sm-9">
         
                 <div class="card">
-                    <div id="chart_teiner">
-                        <canvas id="myChart"></canvas>
-                        <form method="GET">
-                            <div class="date_query">
-                                <label for="start">Begining:</label>
-                                <input type="date" id="begin" name="begin" format= 'dd/mm/yyyy' startDate= '-3d'>
-                                <label for="start">Until:</label>
-                                <input type="date" id="until" name="until" format= 'dd/mm/yyyy' startDate= '-3d'>
-                                <button type="submit" class="btn btn-primary">To Date</button>
-                                <div id="message"></div>
-                            </div>
-                            
-                        </form>
-                            
-                        <!--
-                        <input oninput="updateChart(this)" type="range" id="points" value="2" min="1" max="3">
-                        {% for prod in products %}
-                            <div class="form-check form-switch form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">{{prod.name}}</label>
-                            </div>
-                        {% endfor %}
-                        -->
-
+                    <br>
+                    <div>
+                        <div id="myHandsomeTable"></div>
                     </div>
                     <br>
                     <button onclick="saveAsPDF();" class="btn btn-primary">save as pdf</button>
@@ -92,10 +71,7 @@
     </div>
 
     <script>
-
-    const df_labels = {{df_labels|safe}};
-    const labels = {{labels|safe}};
-    const values = {{values|safe}};
+        
     const raw_data = {{raw_data|safe}};
     const other_model = {};
     const colors = [
@@ -108,6 +84,15 @@
                 'rgba(155, 159, 64, 0.2)',
                 'rgba(70, 60, 35, 0.4)'
             ]
+    const container = document.querySelector('#myHandsomeTable');
+
+    const hot = new Handsontable(container, {
+    data: raw_data,
+    rowHeaders: true,
+    colHeaders: true,
+    height: 'auto',
+    licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
+    });
 
     for (let i = 0; i < values.length; i++) {
         other_model[labels[i]] = values[i];
@@ -157,7 +142,7 @@
 
     function saveAsPDF() {
         //html2canvas(document.getElementById("myChart"), {
-        html2canvas(document.getElementById("myChart"), {
+        html2canvas(document.getElementById("myHandsomeTable"), {
             onrendered: function(canvas) {
                 var img = canvas.toDataURL(); //image data of canvas
                 var doc = new jsPDF('l', 'mm', [297, 210], true);         
