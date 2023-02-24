@@ -32,7 +32,7 @@ class Owner(models.Model):
 # Create your models here.
 class Sport(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateFDateTimeFieldield(null=True, blank=True, auto_now_add=True)
+    date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     def __str__(self) -> str:
