@@ -16,7 +16,7 @@ ON PROGRESS:
 #
 
 TODO:
-# Pagos deben tener info de receptor y de actividad. Y fecha con hora
+# Pagos deben tener info de receptor y de actividad. Y fecha con HORA
 # improve Payment view(User monthly quotas and membership payments balace)
 # improve Balance de cobros (amounts recieved by different partners)
 # Improve sports activites availabilities for new members/Users
