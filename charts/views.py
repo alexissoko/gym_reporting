@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout as logouts
 from .models import *
+from django.core import serializers
 from .forms import *
 # import pandas as pd
 # from rest_framework.views import APIView
@@ -35,7 +36,8 @@ def reporting_sales(request):
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
     payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
-    raw_data = Payment.objects.all().values()
+    raw_data = serializers.serialize("json", Payment.objects.all())
+    # raw_data = Payment.objects.all().values()
     sold_objs = {}
     for sale in payments:
         if sale.user.id not in sold_objs:
@@ -64,7 +66,7 @@ def reporting_sales(request):
         "raw_data" : raw_data,
     
     }
-    breakpoint()
+    # breakpoint()
     return render(request, 'sales.html', context=mydict)
 
 @login_required

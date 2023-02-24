@@ -21,6 +21,7 @@ TODO:
 # Improve sports activites availabilities for new members/Users
 # Pagos visualizar tipo de pagos realizados por mes para balance
 # Generar comprobante de pago
+# Exportar formato excel for downloaded files
 # Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.
 #cambiar opcion "to date" en sales
