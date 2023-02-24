@@ -35,7 +35,7 @@ def reporting_sales(request):
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
     payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
-    
+    raw_data = Payment.objects.all().values()
     sold_objs = {}
     for sale in payments:
         if sale.user.id not in sold_objs:
@@ -61,8 +61,10 @@ def reporting_sales(request):
         "df_labels" : df_labels,
         "labels" : list(all_customers.keys()),
         "values" : list(all_customers.values()),
+        "raw_data" : raw_data,
     
     }
+    breakpoint()
     return render(request, 'sales.html', context=mydict)
 
 @login_required

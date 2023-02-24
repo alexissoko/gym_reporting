@@ -199,10 +199,19 @@
     },
     {
       "model": "charts.payment",
-      "pk": 1,
+      "pk": 2,
+      "fields": {
+        "payment_type": 1,
+        "user": 2,
+        "price": 2000
+      }
+    },
+    {
+      "model": "charts.payment",
+      "pk": 3,
       "fields": {
         "payment_type": 2,
-        "user": 2,
+        "user": 1,
         "price": 2000
       }
     }
