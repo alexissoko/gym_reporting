@@ -21,7 +21,7 @@ SAFEBOX_CHOICES = (
 # Create your models here.
 class Owner(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
+    date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     # total = models.IntegerField(blank=True)
 
@@ -32,7 +32,7 @@ class Owner(models.Model):
 # Create your models here.
 class Sport(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
+    date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     def __str__(self) -> str:
@@ -42,7 +42,7 @@ class Sport(models.Model):
 # Create your models here.
 class Activity(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateTimeField(default=timezone.now)
+    date = models.DateField(default=timezone.now)
     description = models.TextField(null=True, blank=True)
     quota = models.IntegerField(blank=True)
     sport = models.ForeignKey(Sport, on_delete=models.CASCADE, blank=True, null=True)
@@ -55,7 +55,7 @@ class Activity(models.Model):
 # Create your models here.
 class Customer(models.Model):
     name = models.CharField(max_length=100)
-    date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
+    date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField()
     
     def __str__(self) -> str:
@@ -121,7 +121,7 @@ class TypePayment(models.Model):
 
 class Payment(models.Model):
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now)
+    date = models.DateField(default=timezone.now)
     payment_type = models.ForeignKey(TypePayment, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
