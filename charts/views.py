@@ -92,6 +92,27 @@ def reporting_payments(request):
     return render(request, 'payments.html', context=mydict)
 
 @login_required
+def reporting_activities(request):
+    if request.GET.get("begin"):
+        mesh_from = request.GET.get("begin")
+    else:
+        # TODO: default current year fix here
+        mesh_from = "2000-01-01"
+    if request.GET.get("until"):
+        mesh_to = request.GET.get("until")
+    else:
+        mesh_to = timezone.now().strftime('%Y-%m-%d')
+    payments = Activity.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
+    raw_data = serializers.serialize("json", Activity.objects.all())
+
+
+    mydict= {
+        "raw_data" : raw_data,
+    }
+    # breakpoint()
+    return render(request, 'payments.html', context=mydict)
+
+@login_required
 def reporting_providers(request):
     print('boxes')
     if request.method == 'POST':
