@@ -3,6 +3,8 @@ from django import forms
 from django.utils import timezone
 import calendar
 from datetime import datetime
+from django.core.validators import RegexValidator
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -23,7 +25,7 @@ SAFEBOX_CHOICES = (
 
 # Create your models here.
 class Owner(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, help_text=_('First and last name.'), verbose_name=_('name'))
     date = models.DateField(null=True, blank=True, auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     # total = models.IntegerField(blank=True)
