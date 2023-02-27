@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout as logouts
 from .models import *
 from django.core import serializers
@@ -7,6 +7,8 @@ from .forms import *
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 import json
+from .forms import PaymentForm
+
 
 from django.shortcuts import render
 
@@ -233,3 +235,31 @@ class GroupByViewSport(OriginalReportView):
          'title': 'Column Chart (Values)'
          },
     ]
+
+def post_new(request):
+    if request.method == "POST":
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            payment = form.save(commit=False)
+            payment.author = request.user
+            payment.published_date = timezone.now()
+            payment.save()
+            return redirect('post_new', pk=payment.pk)
+    else:
+        form = PaymentForm()
+    return render(request, 'post_new.html', {'form': form})
+
+
+def post_detail(request, pk):
+    payment = get_object_or_404(Payment, pk=pk)
+    if request.method == "POST":
+        form = PaymentForm(request.POST, instance=payment)
+        if form.is_valid():
+            payment = form.save(commit=False)
+            payment.author = request.user
+            payment.published_date = timezone.now()
+            payment.save()
+            return redirect('post_new', pk=payment.pk)
+    else:
+        form = PaymentForm(instance=payment)
+    return render(request, 'post_detail.html', {'form': form})

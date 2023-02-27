@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="post">
+        <aside class="actions">
+            <a class="btn btn-secondary" href="{% url 'post_detail' pk=post.pk %}">
+                {% include './icons/pencil-fill.svg' %}
+            </a>
+        </aside>
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+        {% endif %}
+        <h2>{{ post.user }}</h2>
+        <p>{{ post.receiver|linebreaksbr }}</p>
+        <p>{{ post.date|linebreaksbr }}</p>
+        <p>{{ post.time|linebreaksbr }}</p>
+        <p>{{ post.price|linebreaksbr }}</p>
+        <p>{{ post.quota|linebreaksbr }}</p>
+        <p>{{ post.payment_type|linebreaksbr }}</p>
+    </article>
+{% endblock %}
