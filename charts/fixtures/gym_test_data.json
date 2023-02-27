@@ -164,8 +164,8 @@
         "fee": false,
         "price": 2000,
         "user": 2,
-        "description":"None",
-        "quantity":1
+        "description":"None"
+        
       }
     },
     {

@@ -138,17 +138,9 @@ def reporting_providers(request):
     all_data = {prod.invoice.name: {} for prod in purchases}
     df_labels = sorted([x[0].strftime('%Y-%m-%d') for x in purchases.values_list("date").distinct()])
 
-    for sale in purchases:
-        all_data[sale.invoice.name][sale.date.strftime('%Y-%m-%d')] = sale.quantity
+   
     
-    for label in df_labels:
-        for k, v in all_data.items():
-            if label not in v:
-                all_data[k][label] = 0
     
-    for k,v in all_data.items():
-        all_data[k] = [all_data[k][x] for x in sorted(all_data[k])]
-
 
     mydict= {
         'owner': Owner.objects.all(),

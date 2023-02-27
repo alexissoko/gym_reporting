@@ -88,15 +88,7 @@ class Membership(models.Model):
     price = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
-    quantity = models.IntegerField(default=1)
-
-    def get_quantity(self):
-        to_be_returned = self.quantity
-        self.quantity += 1
-        return to_be_returned
-    
-    def set_quantity(self):
-        self.quantity += 1
+   
 
     def __str__(self) -> str:
         return self.activity.name +'_'+ self.user.name.replace(' ','') + "_" + str(self.date)
