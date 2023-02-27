@@ -14,6 +14,8 @@ from pathlib import Path
 from typing import Any, Dict
 import os
 from django.conf.global_settings import LANGUAGES as DJANGO_LANGUAGES
+from django.utils.translation import gettext_lazy as _
+
 
 
 
@@ -115,7 +117,11 @@ LANGUAGE_CODE = 'en'  # or other appropriate code
 USE_I18N = True
 USE_L10N = True
 TIME_ZONE = 'UTC'
-LANGUAGES = DJANGO_LANGUAGES
+# LANGUAGES = DJANGO_LANGUAGES
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Spanish')),
+]
 
 
 USE_I18N = True
