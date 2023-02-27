@@ -25,6 +25,7 @@ urlpatterns = [
     path('no-group-by/', login_required(views.SimpleListReport.as_view()), name='simple-filer'),
     path('quota-group-by/', login_required(views.GroupByViewSport.as_view()), name='quota-filer'),
     path('activities/', login_required(views.ActivitiesCrossTab.as_view()), name='activities-filer'),
+    path('i18n/', include('django.conf.urls.i18n')),
 
     # how to reference inside admin side
     path('', include('charts.urls'))
