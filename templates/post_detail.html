@@ -3,21 +3,21 @@
 {% block content %}
     <article class="post">
         <aside class="actions">
-            <a class="btn btn-secondary" href="{% url 'post_detail' pk=post.pk %}">
+            <a class="btn btn-secondary" href="{% url 'post_detail' pk=payment.pk %}">
                 {% include './icons/pencil-fill.svg' %}
             </a>
         </aside>
-        {% if post.published_date %}
+        {% if payment.date %}
             <time class="date">
-                {{ post.published_date }}
+                {{ payment.date }}
             </time>
         {% endif %}
-        <h2>{{ post.user }}</h2>
-        <p>{{ post.receiver|linebreaksbr }}</p>
-        <p>{{ post.date|linebreaksbr }}</p>
-        <p>{{ post.time|linebreaksbr }}</p>
-        <p>{{ post.price|linebreaksbr }}</p>
-        <p>{{ post.quota|linebreaksbr }}</p>
-        <p>{{ post.payment_type|linebreaksbr }}</p>
+        <h2>{{ payment.user }}</h2>
+        <p>{{ payment.receiver|linebreaksbr }}</p>
+        <p>{{ payment.date|linebreaksbr }}</p>
+        <p>{{ payment.time|linebreaksbr }}</p>
+        <p>{{ payment.price|linebreaksbr }}</p>
+        <p>{{ payment.quota|linebreaksbr }}</p>
+        <p>{{ payment.payment_type|linebreaksbr }}</p>
     </article>
 {% endblock %}
