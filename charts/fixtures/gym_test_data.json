@@ -194,7 +194,8 @@
       "fields": {
         "payment_type": 1,
         "user": 2,
-        "price": 2000
+        "price": 2000,
+        "units": 2,
       }
     },
     {
@@ -203,7 +204,8 @@
       "fields": {
         "payment_type": 1,
         "user": 2,
-        "price": 2000
+        "price": 2000,
+        "units": 2
       }
     },
     {
@@ -212,7 +214,8 @@
       "fields": {
         "payment_type": 2,
         "user": 1,
-        "price": 2000
+        "price": 2000,
+        "units": 2
       }
     }
   ]
