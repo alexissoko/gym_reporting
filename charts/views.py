@@ -250,16 +250,7 @@ def post_new(request):
     return render(request, 'post_new.html', {'form': form})
 
 
-def post_detail(request, pk):
+def reporting_invoice(request, pk):
     payment = get_object_or_404(Payment, pk=pk)
-    if request.method == "POST":
-        form = PaymentForm(request.POST, instance=payment)
-        if form.is_valid():
-            payment = form.save(commit=False)
-            payment.author = request.user
-            payment.published_date = timezone.now()
-            payment.save()
-            return redirect('post_new', pk=payment.pk)
-    else:
-        form = PaymentForm(instance=payment)
-    return render(request, 'post_detail.html', {'form': form})
+    # form = PaymentForm(request.GET, instance=payment)
+    return render(request, 'post_invoice.html', {'payment': payment})

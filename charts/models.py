@@ -124,6 +124,9 @@ class TypePayment(models.Model):
 
 
 class Payment(models.Model):
+    class Meta:
+        verbose_name = _('payment')
+        verbose_name_plural = _('payments')
     # invoice=models.ForeignKey(Input, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now, verbose_name=_('date'))
     time = models.TimeField(default=datetime.now().strftime("%H:%M:%S"))
