@@ -31,9 +31,9 @@
                                     <tbody>
                                         <tr>
                                             <td>{{payment.payment_type.membership.activity}}</td>
-                                            <td>{{payment.quata}}</td>
+                                            <td>{{payment.units}}</td>
                                             <td>{{payment.price}}</td>
-                                            <!--td>{{payment.price}} * {{payment.units}}/td-->
+                                            <td>{{payment.price}}  "X" {{payment.units}}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -45,8 +45,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="text-right mb-3"><button class="btn btn-danger btn-sm mr-5" type="button">Pay Now</button></div>
-                        <div><button  class="btn btn-primary">save as pdf</button>
+                        <div class="text-right mb-3"><button class="btn btn-danger btn-sm mr-5" type="button">Save PDF</button></div>
                         </div>
                     </div>
                 </div>
