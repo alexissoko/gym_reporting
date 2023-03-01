@@ -27,3 +27,4 @@ TODO:
 # 10 de Marzo Demostracion.
 #cambiar opcion "to date" en sales
 #roll back
+#Eliminar referencias de jazzmin(click in support lleva a git gub)
