@@ -135,6 +135,8 @@ class Payment(models.Model):
     receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
     price = models.IntegerField()
+    units = models.IntegerField()
+    
     # TODO: 12 quotas generator funcitonality
     quota_number = models.TextField(null=True, blank=True)#choices=MONTHLY_QUOTAS)
 
