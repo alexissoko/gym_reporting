@@ -85,6 +85,8 @@ def reporting_payments(request):
         mesh_to = timezone.now().strftime('%Y-%m-%d')
     payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
     json_data = serializers.serialize("json", Payment.objects.all())
+    # json_data = serializers.serialize("json", Payment.objects.values())
+    # json_data = Payment.objects.values()
     raw_data =  Payment.objects.all()
     labels = list(raw_data.values()[0].keys())
 
