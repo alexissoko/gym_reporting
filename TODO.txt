@@ -11,12 +11,14 @@ DONE:
 # Add security reporting(login required)
 # ADd login requiered message when not logged in
 # Slicke repoting no longer used - Reporting date filter(calendar buttons not working)(iconos calendario no funcionan)
+# Eliminar referencias de jazzmin(click in support lleva a git gub)
+# cambiar opcion "to date" en sales
 
 ON PROGRESS:
 #
 
 TODO:
-# Pagos deben tener info de receptor y de actividad. Y fecha con HORA
+# Reporte/planilla de Pagos debe mostrar titulos en columnas
 # improve Payment view(User monthly quotas and membership payments balace)
 # improve Balance de cobros (amounts recieved by different partners)
 # Improve sports activites availabilities for new members/Users
@@ -25,6 +27,3 @@ TODO:
 # Exportar formato excel for downloaded files
 # Translate words to Spanish(every field)
 # 10 de Marzo Demostracion.
-#cambiar opcion "to date" en sales
-#roll back
-#Eliminar referencias de jazzmin(click in support lleva a git gub)
