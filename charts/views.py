@@ -84,11 +84,15 @@ def reporting_payments(request):
     else:
         mesh_to = timezone.now().strftime('%Y-%m-%d')
     payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
-    raw_data = serializers.serialize("json", Payment.objects.all())
+    json_data = serializers.serialize("json", Payment.objects.all())
+    raw_data =  Payment.objects.all()
+    labels = list(raw_data.values()[0].keys())
 
 
     mydict= {
         "raw_data" : raw_data,
+        "json_data" : json_data,
+        "labels": labels
     }
     # breakpoint()
     return render(request, 'payments.html', context=mydict)

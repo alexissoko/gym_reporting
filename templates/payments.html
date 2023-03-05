@@ -69,8 +69,9 @@
 
     <script>
         
-    const raw_data = {{raw_data|safe}};
-    const other_model = {};
+    const json_data = {{json_data|safe}};
+    //const raw_data = {{raw_data|safe}};
+    const labels = {{labels|safe}};
     const colors = [
                 'rgba(134, 99, 132, 0.5)',
                 'rgba(154, 162, 235, 0.5)',
@@ -84,58 +85,12 @@
     const container = document.querySelector('#myHandsomeTable');
 
     const hot = new Handsontable(container, {
-    data: raw_data,
+    data: json_data,
     rowHeaders: true,
-    colHeaders: true,
+    colHeaders: labels,
     height: 'auto',
     licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
     });
-
-    for (let i = 0; i < values.length; i++) {
-        other_model[labels[i]] = values[i];
-        }
-    console.log(other_model);
-
-    window.onload=function(){
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: df_labels,
-                datasets: []
-            },
-            options: {
-                scales: {
-                    x: {
-                        stacked: true,
-                    },
-                    y: {
-                        stacked: true,
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    },
-                }
-            }
-        });
-    
-        for (product in other_model) {
-            var newDataset = {
-                label: product,
-                data: [],
-                /* TODO randomize colors for each product */
-                backgroundColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
-                borderColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
-                // backgroundColor: colors.pop(),
-                borderWidth: 3
-                };
-                for (value in other_model[product]) {
-                    newDataset.data.push(other_model[product][value]);
-                }
-                myChart.config.data.datasets.push(newDataset);
-        }
-        myChart.update();
-    };
 
     function saveAsPDF() {
         //html2canvas(document.getElementById("myChart"), {
