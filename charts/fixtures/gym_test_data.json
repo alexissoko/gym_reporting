@@ -169,6 +169,18 @@
       }
     },
     {
+      "model": "charts.membership",
+      "pk": 1,
+      "fields": {
+        "activity": 1,
+        "fee": false,
+        "price": 2000,
+        "user": 2,
+        "description":"None"
+        
+      }
+    },
+    {
       "model": "charts.typepayment",
       "pk": 1,
       "fields": {
@@ -227,7 +239,8 @@
         "user": 1,
         "price": 2000,
         "units": 2,
-        "receiver": 2
+        "receiver": 2,
+        "date": "03/05/2023"
       }
     }
   ]
