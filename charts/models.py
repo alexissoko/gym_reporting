@@ -112,7 +112,6 @@ class TypePayment(models.Model):
     payment_type = models.CharField(max_length=100, null=True)
     # payment_type = forms.ChoiceField(choices=PAYMENT_CHOICES, widget=forms.RadioSelect())
 
-    receiver = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     membership = models.ForeignKey(
         Membership, on_delete=models.CASCADE, blank=True, null=True
     )

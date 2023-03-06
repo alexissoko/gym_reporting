@@ -39,33 +39,34 @@ def reporting_sales(request):
         mesh_to = timezone.now().strftime('%Y-%m-%d')
     payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by("-date")
     raw_data = serializers.serialize("json", Payment.objects.all())
+    test_data = payments.values("receiver","date", "price")
     # raw_data = Payment.objects.all().values()
     sold_objs = {}
     for sale in payments:
         if sale.user.id not in sold_objs:
             sold_objs[sale.user.id] = sale.user.name
     
+    receivers = {pay.receiver.name: {} for pay in payments}
     all_customers = {pay.user.customer.name: {} for pay in payments}
     df_labels = sorted([x[0].strftime('%Y-%m-%d') for x in payments.values_list("date").distinct()])
-
     for pay in payments:
-        all_customers[pay.user.customer.name][pay.date.strftime('%Y-%m-%d')] = pay.price
-    
-    for label in df_labels:
-        for k, v in all_customers.items():
-            if label not in v:
-                all_customers[k][label] = 0
-    
-    for k,v in all_customers.items():
-        all_customers[k] = [all_customers[k][x] for x in sorted(all_customers[k])]
-
+        if pay.date.strftime('%Y-%m-%d') not in receivers[pay.receiver.name]:            
+            all_customers[pay.user.customer.name][pay.date.strftime('%Y-%m-%d')] = pay.price
+    for pay in payments:
+        if pay.date.strftime('%Y-%m-%d') not in receivers[pay.receiver.name]:            
+            receivers[pay.receiver.name][pay.date.strftime('%Y-%m-%d')] = pay.price
+        else:
+            receivers[pay.receiver.name][pay.date.strftime('%Y-%m-%d')] += pay.price
+            
 
     mydict= {
+        "receivers" : receivers,
         'sold_objs':sold_objs,
         "df_labels" : df_labels,
-        "labels" : list(all_customers.keys()),
-        "values" : list(all_customers.values()),
+        "labels" : list(receivers.keys()),
+        "values" : list(receivers.values()),
         "raw_data" : raw_data,
+        "test_data" : test_data
     
     }
     # breakpoint()

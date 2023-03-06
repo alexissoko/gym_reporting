@@ -87,7 +87,8 @@
 
     <script>
         
-
+        
+    const test_data = {{receivers|safe}};
     const df_labels = {{df_labels|safe}};
     const labels = {{labels|safe}};
     const values = {{values|safe}};
@@ -107,7 +108,7 @@
     for (let i = 0; i < values.length; i++) {
         other_model[labels[i]] = values[i];
         }
-    console.log(other_model);
+    //console.log(receivers);
 
     window.onload=function(){
         var ctx = document.getElementById("myChart");
