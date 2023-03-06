@@ -14,12 +14,12 @@ DONE:
 # Eliminar referencias de jazzmin(click in support lleva a git gub)
 # cambiar opcion "to date" en sales
 # Reporte/planilla de Pagos debe mostrar titulos en columnas
+# Generar comprobante de pago
 
 ON PROGRESS:
 #
 
 TODO:
-# Generar comprobante de pago
 # improve Payment view(User monthly quotas and membership payments balace)
 # improve Balance de cobros (amounts recieved by different partners)
 # Improve sports activites availabilities for new members/Users
