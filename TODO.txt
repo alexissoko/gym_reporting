@@ -16,16 +16,16 @@ DONE:
 # Reporte/planilla de Pagos debe mostrar titulos en columnas
 # Generar comprobante de pago
 # improve Payment view(User monthly quotas and membership payments balace)
+# Exportar formato excel for downloaded files
+# Dar estilo a la pagina de nuevo pago
 
 ON PROGRESS:
 #
 
 TODO:
 # improve Balance de cobros (amounts recieved by different partners)
-# Improve sports activites availabilities for new members/Users
 # Pagos visualizar tipo de pagos realizados por mes para balance
-# Exportar formato excel for downloaded files
-# Dar estilo a la pagina de nuevo pago
+# Improve sports activites availabilities for new members/Users
 # Translate words to Spanish(every field)
 
 
