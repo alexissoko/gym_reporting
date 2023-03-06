@@ -34,6 +34,7 @@
                                             <th>Producto</th>
                                             <th>Unit</th>
                                             <th>Price</th>
+                                            <th>Quota</th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>
@@ -42,13 +43,15 @@
                                             <td>{{payment.payment_type.membership.activity}}</td>
                                             <td>{{payment.units}}</td>
                                             <td>{{payment.price}}</td>
-                                            <td>{{payment.price}}  "X" {{payment.units}}</td>
+                                            <td>{{payment.quota}}</td>
+                                            <td>{% widthratio payment.price 1 payment.units %}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td>Total</td>
-                                            <td>940</td>
+                                            <td></td>
+                                            <th>Total</th>
+                                            <td>TBD</td>
                                         </tr>
                                     </tbody>
                                 </table>

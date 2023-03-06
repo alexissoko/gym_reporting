@@ -259,4 +259,13 @@ def post_new(request):
 def reporting_invoice(request, pk):
     payment = get_object_or_404(Payment, pk=pk)
     # form = PaymentForm(request.GET, instance=payment)
+    payment.price
     return render(request, 'post_invoice.html', {'payment': payment})
+
+from django import template
+
+register = template.Library()
+
+@register.filter
+def multiply(value, arg):
+    return value * arg
