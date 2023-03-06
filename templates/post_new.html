@@ -11,4 +11,16 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-secondary">Save and Print</button>
     </form>
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        
+        {% for attribute in form %}
+        <div class="form-group">
+            <label for="inputAddress">{{ attribute.name }}</label>
+            <input type="text" class="form-control" id="inputAddress" value={{attribute.value}}>
+        </div>
+            
+        {% endfor %}
+        <button type="submit" class="save btn btn-secondary">Save and Print</button>
+    </form>
 {% endblock %}
