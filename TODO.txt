@@ -15,12 +15,12 @@ DONE:
 # cambiar opcion "to date" en sales
 # Reporte/planilla de Pagos debe mostrar titulos en columnas
 # Generar comprobante de pago
+# improve Payment view(User monthly quotas and membership payments balace)
 
 ON PROGRESS:
 #
 
 TODO:
-# improve Payment view(User monthly quotas and membership payments balace)
 # improve Balance de cobros (amounts recieved by different partners)
 # Improve sports activites availabilities for new members/Users
 # Pagos visualizar tipo de pagos realizados por mes para balance

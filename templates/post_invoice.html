@@ -35,6 +35,7 @@
                                             <th>Unit</th>
                                             <th>Price</th>
                                             <th>Quota</th>
+                                            <th>membership</th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>
@@ -44,9 +45,11 @@
                                             <td>{{payment.units}}</td>
                                             <td>{{payment.price}}</td>
                                             <td>{{payment.quota}}</td>
+                                            <td>{{payment.payment_type.membership.fee}}</td>
                                             <td>{% widthratio payment.price 1 payment.units %}</td>
                                         </tr>
                                         <tr>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
