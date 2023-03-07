@@ -18,13 +18,14 @@ DONE:
 # improve Payment view(User monthly quotas and membership payments balace)
 # Exportar formato excel for downloaded files
 # Dar estilo a la pagina de nuevo pago
+# improve Balance de cobros (amounts recieved by different partners)
 
 ON PROGRESS:
 #
 
 TODO:
-# improve Balance de cobros (amounts recieved by different partners)
-# Pagos visualizar tipo de pagos realizados por mes para balance
+# Sales change view to monthly, weekly and daily
+# Fix Payments sheet to not include first data column (type charts.payement)
 # Improve sports activites availabilities for new members/Users
 # Translate words to Spanish(every field)
 

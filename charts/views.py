@@ -67,8 +67,7 @@ def reporting_sales(request):
         "labels": list(receivers.keys()),
         "values": list(receivers.values()),
     }
-    print(receivers)
-    # breakpoint()
+
     return render(request, "sales.html", context=mydict)
 
 
