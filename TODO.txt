@@ -18,12 +18,12 @@ DONE:
 # improve Payment view(User monthly quotas and membership payments balace)
 # Exportar formato excel for downloaded files
 # improve Balance de cobros (amounts recieved by different partners)
+# Dar estilo a la pagina de nuevo pago
 
 ON PROGRESS:
 #
 
 TODO:
-# Dar estilo a la pagina de nuevo pago
 # Fix Payments sheet to not include first data column (type charts.payement)
 # Sales change view to monthly, weekly and daily
 # Improve sports activites availabilities for new members/Users
