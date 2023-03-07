@@ -21,7 +21,7 @@
       crossorigin="anonymous"
     />
 
-    <title>Movie Club</title>
+    <title>{{ _("Payments") }}</title>
   </head>
   <body>
     <form method="get">
@@ -29,11 +29,11 @@
      </form>
      
     <div class="container mt-5">
-      <h1>Movie List</h1>
+      <h1>{{ _("Payments") }}</h1>
       <hr />
       {% for pay in payments %}
       <div class="card bg-dark text-white mb-3">
-        <div class="card-header"><h1>{{pay.date}}</h1></div>
+        <div class="card-header">{{pay.date}} {{pay.time}}</div>
         <div class="card-body">{{pay.price}}</div>
         <div class="card-body">{{pay.receiver.name}}</div>
       </div>
