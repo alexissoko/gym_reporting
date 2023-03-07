@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout as logouts
 from .models import *
 from django.core import serializers
+from django.http import JsonResponse
 from .forms import *
 
 # import pandas as pd
@@ -73,21 +74,18 @@ def reporting_sales(request):
 
 @login_required
 def reporting_payments(request):
-    json_data = serializers.serialize("json", Payment.objects.fieldsets = (
-        (None, {
-            'fields': (
-                
-            ),
-        }),
-    )())
+    json_data = serializers.serialize("json", Payment.objects.all())
     json_data2 = "[{" + json_data[39:]
     raw_data = Payment.objects.values()
-    labels = list(raw_data.values()[0].keys())
+
+    labels = ["model"] + list(raw_data.values()[0].keys())
     labels_1 = labels[1:]
+    raw_data = JsonResponse(list(Payment.objects.values()),safe = False)
     # breakpoint()
 
     mydict = {
         "json_data": json_data,
+        "raw_data": raw_data,
         "labels": labels
         }
     return render(request, "payments.html", context=mydict)
