@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout as logouts
 from .models import *
+from .filters import *
 from django.core import serializers
 from django.http import JsonResponse
 from .forms import *
@@ -265,11 +266,14 @@ def reporting_invoice(request, pk):
     return render(request, "post_invoice.html", {"payment": payment})
 
 
-from django import template
 
-register = template.Library()
-
-
-@register.filter
-def multiply(value, arg):
-    return value * arg
+def payment_search(request):
+    payments = Payment.objects.all()
+    myFilter = PaymentFilter(request.GET, queryset=payments)
+    payments = myFilter.qs
+    context = {
+        'myFilter': myFilter,
+        'payments': payments,
+    }
+    return render(request, 'payment_search.html', context)
+# Create your models here.

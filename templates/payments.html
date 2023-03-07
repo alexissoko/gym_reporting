@@ -59,8 +59,11 @@
                     <br>
                     <button onclick="saveAsPDF();" class="btn btn-primary">save as pdf</button>
                 </div>
-                <a href="{% url 'post_new' %}" class="top-menu">
+                <a href="{% url 'post_new' %}" class="top-menu" sizes="HeightxWidth|any"> 
                     {% include './icons/file-earmark-plus.svg' %}
+                </a>
+                <a href="{% url 'payment_search' %}" class="top-menu">
+                    {% include './icons/search.svg' %}
                 </a>
             </div>
         </div>

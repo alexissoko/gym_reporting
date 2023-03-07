@@ -142,5 +142,3 @@ class Payment(models.Model):
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date) + "_" + str(self.time)
 
-
-# Create your models here.
