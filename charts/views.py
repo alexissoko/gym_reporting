@@ -81,8 +81,8 @@ def reporting_payments(request):
     # breakpoint()
 
     mydict = {
-        "json_data": json_data2,
-        "labels": labels_1
+        "json_data": json_data,
+        "labels": labels
         }
     return render(request, "payments.html", context=mydict)
 

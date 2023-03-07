@@ -24,8 +24,8 @@ ON PROGRESS:
 #
 
 TODO:
-# Sales change view to monthly, weekly and daily
 # Fix Payments sheet to not include first data column (type charts.payement)
+# Sales change view to monthly, weekly and daily
 # Improve sports activites availabilities for new members/Users
 # Translate words to Spanish(every field)
 
