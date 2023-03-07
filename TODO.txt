@@ -17,14 +17,13 @@ DONE:
 # Generar comprobante de pago
 # improve Payment view(User monthly quotas and membership payments balace)
 # Exportar formato excel for downloaded files
-# Dar estilo a la pagina de nuevo pago
 # improve Balance de cobros (amounts recieved by different partners)
 
 ON PROGRESS:
 #
 
 TODO:
-# New Payment input should be select box or auto completed most of the fields
+# Dar estilo a la pagina de nuevo pago
 # Fix Payments sheet to not include first data column (type charts.payement)
 # Sales change view to monthly, weekly and daily
 # Improve sports activites availabilities for new members/Users
