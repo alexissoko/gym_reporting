@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 17:44+0000\n"
+"POT-Creation-Date: 2023-03-07 19:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1258,18 +1258,14 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#: project/settings.py:122
+#: project/settings.py:123
 msgid "English"
 msgstr ""
 
-#: project/settings.py:123
+#: project/settings.py:124
 msgid "Spanish"
 msgstr ""
 
-#: templates/payment_search.html:8
-msgid "Search"
-msgstr ""
-
-#: templates/welcome.html:14 templates/welcome.html:15
-msgid "Welcome to Reporting app"
+#: templates/welcome.html:14
+msgid "Bienvenidos a Gym Reporting"
 msgstr ""
