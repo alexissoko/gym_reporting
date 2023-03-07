@@ -213,6 +213,17 @@
       "model": "charts.payment",
       "pk": 1,
       "fields": {
+        "payment_type": 2,
+        "user": 1,
+        "price": 4500,
+        "units": 1,
+        "receiver": 3
+      }
+    },
+    {
+      "model": "charts.payment",
+      "pk": 1,
+      "fields": {
         "payment_type": 1,
         "user": 2,
         "price": 2000,
@@ -224,7 +235,7 @@
       "model": "charts.payment",
       "pk": 2,
       "fields": {
-        "payment_type": 1,
+        "payment_type": 2,
         "user": 2,
         "price": 2000,
         "units": 2,
@@ -236,7 +247,7 @@
       "pk": 3,
       "fields": {
         "payment_type": 2,
-        "user": 1,
+        "user": 3,
         "price": 2000,
         "units": 2,
         "receiver": 2,
