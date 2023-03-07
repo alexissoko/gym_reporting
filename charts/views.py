@@ -73,7 +73,13 @@ def reporting_sales(request):
 
 @login_required
 def reporting_payments(request):
-    json_data = serializers.serialize("json", Payment.objects.all())
+    json_data = serializers.serialize("json", Payment.objects.fieldsets = (
+        (None, {
+            'fields': (
+                
+            ),
+        }),
+    )())
     json_data2 = "[{" + json_data[39:]
     raw_data = Payment.objects.values()
     labels = list(raw_data.values()[0].keys())
