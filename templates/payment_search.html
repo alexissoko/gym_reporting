@@ -33,18 +33,19 @@
     <div class="container mt-5">
         <h1>{{ _("Payments") }}</h1>
         <hr />
-        <form method="POST" class="form-group">{% csrf_token %}
+        <form method="get" class="form-group">{% csrf_token %}
 
-            {% for pay in payments %}
             <select class="form-control" id="exampleFormControlSelect1">
+                {% for pay in payments %}
                 <option>
                     <div class="card-header">{{pay.date}} {{pay.time}}</div>
                     <div class="card-body">{{pay.price}}</div>
                     <div class="card-body">{{pay.receiver.name}}</div>
 
                 </option>
+                {% endfor %}
             </select>
-            {% endfor %}
+            <button class="btn btn-primary">Select</button>
         </form>
         
     </div>
