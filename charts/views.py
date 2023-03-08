@@ -155,6 +155,41 @@ def reporting_providers(request):
     return render(request, "providers.html", context=mydict)
 
 
+def post_new(request):
+    if request.method == "POST":
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            payment = form.save(commit=False)
+            payment.author = request.user
+            payment.published_date = timezone.now()
+            payment.save()
+            return redirect("reporting_invoice", pk=payment.pk)
+    else:
+        form = PaymentForm()
+        return render(request, "post_new.html", {"form": form})
+
+
+def reporting_invoice(request, pk):
+    payment = get_object_or_404(Payment, pk=pk)
+    return render(request, "post_invoice.html", {"payment": payment})
+
+
+def payment_search(request, pk=None):
+    if request.method == "POST":
+        payment = get_object_or_404(Payment, pk=pk)
+        return render(request, "post_invoice.html", {"payment": payment})
+    else:
+        payments = Payment.objects.all()
+        myFilter = PaymentFilter(request.GET, queryset=payments)
+        payments = myFilter.qs
+        context = {
+            'myFilter': myFilter,
+            'payments': payments,
+        }
+        return render(request, 'payment_search.html', context)
+# Create your models here.
+
+
 class SimpleListReport(OriginalReportView):
     """
     Let's start by creating a page where we can filter our report_model record / dataset.
@@ -244,36 +279,3 @@ class GroupByViewSport(OriginalReportView):
         },
     ]
 
-
-def post_new(request):
-    if request.method == "POST":
-        form = PaymentForm(request.POST)
-        if form.is_valid():
-            payment = form.save(commit=False)
-            payment.author = request.user
-            payment.published_date = timezone.now()
-            payment.save()
-            return redirect("reporting_invoice", pk=payment.pk)
-    else:
-        form = PaymentForm()
-    return render(request, "post_new.html", {"form": form})
-
-
-def reporting_invoice(request, pk):
-    payment = get_object_or_404(Payment, pk=pk)
-    # form = PaymentForm(request.GET, instance=payment)
-    payment.price
-    return render(request, "post_invoice.html", {"payment": payment})
-
-
-
-def payment_search(request):
-    payments = Payment.objects.all()
-    myFilter = PaymentFilter(request.GET, queryset=payments)
-    payments = myFilter.qs
-    context = {
-        'myFilter': myFilter,
-        'payments': payments,
-    }
-    return render(request, 'payment_search.html', context)
-# Create your models here.

@@ -26,18 +26,27 @@
   <body>
     <form method="get">
         {{myFilter.form}}
-     </form>
+        <button class="btn btn-primary">search</button>
+
+    </form>
      
     <div class="container mt-5">
-      <h1>{{ _("Payments") }}</h1>
-      <hr />
-      {% for pay in payments %}
-      <div class="card bg-dark text-white mb-3">
-        <div class="card-header">{{pay.date}} {{pay.time}}</div>
-        <div class="card-body">{{pay.price}}</div>
-        <div class="card-body">{{pay.receiver.name}}</div>
-      </div>
-      {% endfor %}
+        <h1>{{ _("Payments") }}</h1>
+        <hr />
+        <form method="POST" class="form-group">{% csrf_token %}
+
+            {% for pay in payments %}
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>
+                    <div class="card-header">{{pay.date}} {{pay.time}}</div>
+                    <div class="card-body">{{pay.price}}</div>
+                    <div class="card-body">{{pay.receiver.name}}</div>
+
+                </option>
+            </select>
+            {% endfor %}
+        </form>
+        
     </div>
 
     <!-- Optional JavaScript -->

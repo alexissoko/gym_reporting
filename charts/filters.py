@@ -8,5 +8,5 @@ class PaymentFilter(django_filters.FilterSet):
     
     class Meta:
         model = models.Payment
-        fields = ['user']
+        fields = ['user', 'receiver']
  
