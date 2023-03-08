@@ -253,7 +253,7 @@ def post_new(request):
             payment.author = request.user
             payment.published_date = timezone.now()
             payment.save()
-            return redirect("post_new", pk=payment.pk)
+            return redirect("reporting_invoice", pk=payment.pk)
     else:
         form = PaymentForm()
     return render(request, "post_new.html", {"form": form})
