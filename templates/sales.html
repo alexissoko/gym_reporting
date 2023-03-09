@@ -73,10 +73,7 @@
     const receivers = {{receivers|safe}};
     const totals = {{totals|safe}};
     const df_labels = {{df_labels|safe}};
-    const labels = {{labels|safe}};
-    const values = {{values|safe}};
     const total_labels = {{total_labels|safe}};
-    const total_values = {{total_values|safe}};
     const colors = [
                 'rgba(134, 99, 132, 0.5)',
                 'rgba(154, 162, 235, 0.5)',
@@ -132,12 +129,12 @@
         }
         myChart.update();
 
-                var ctx = document.getElementById("myChart2");
+        var ctx = document.getElementById("myChart2");
         var myChar2 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: total_labels,
-                datasets: []
+                datasets: [],
             },
             options: {
                 scales: {

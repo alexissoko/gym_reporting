@@ -53,6 +53,7 @@ def reporting_sales(request):
     df_labels = sorted(
         [x[0].strftime("%Y-%m-%d") for x in payments.values_list("date").distinct()]
     )
+    total_labels = [x for x in totals.keys()]
 
     for landmark in df_labels:
         for name in receivers:
@@ -67,12 +68,9 @@ def reporting_sales(request):
         "receivers": receivers,
         "totals": totals,
         "df_labels": df_labels,
-        "labels": list(receivers.keys()),
-        "values": list(receivers.values()),
-        "total_labels": list(totals.keys()),
-        "total_values": list(totals.values()),
+        "total_labels": total_labels,
     }
-
+    # breakpoint()
     return render(request, "sales.html", context=mydict)
 
 
@@ -85,7 +83,6 @@ def reporting_payments(request):
     labels = ["model"] + list(raw_data.values()[0].keys())
     labels_1 = labels[1:]
     raw_data = JsonResponse(list(Payment.objects.values()),safe = False)
-    # breakpoint()
 
     mydict = {
         "json_data": json_data,
@@ -114,7 +111,6 @@ def reporting_activities(request):
     mydict = {
         "raw_data": raw_data,
     }
-    # breakpoint()
     return render(request, "payments.html", context=mydict)
 
 
