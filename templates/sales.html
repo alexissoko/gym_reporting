@@ -138,10 +138,10 @@
             var newDataset = {
                 label: product,
                 data: [],
-                /* TODO randomize colors for each product */
-                backgroundColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
-                borderColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
-                // backgroundColor: colors.pop(),
+                backgroundColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
+                borderColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
+                //backgroundColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
+                //borderColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
                 borderWidth: 3
                 };
                 for (value in other_model[product]) {
