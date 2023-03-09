@@ -49,6 +49,7 @@
                             <input type="date" id="begin" name="begin" format= 'dd/mm/yyyy' startDate= '-3d'>
                             <label for="start">Until:</label>
                             <input type="date" id="until" name="until" format= 'dd/mm/yyyy' startDate= '-3d'>
+                            <br>
                             <button type="submit" class="btn btn-primary">Apply</button>
                             <div id="message"></div>
                         </div>
@@ -137,7 +138,7 @@
                 datasets: [
                 {
                     label: 'Acquisitions by year',
-                    data: final_totals.map(row => row.total)
+                    data: final_totals.map(row => row.total )
                 }
             ]
             },
