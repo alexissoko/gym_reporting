@@ -73,7 +73,7 @@
     const receivers = {{receivers|safe}};
     const totals = {{totals|safe}};
     const df_labels = {{df_labels|safe}};
-    const total_labels = {{total_labels|safe}};
+    const final_totals = {{final_totals|safe}};
     const colors = [
                 'rgba(134, 99, 132, 0.5)',
                 'rgba(154, 162, 235, 0.5)',
@@ -132,9 +132,14 @@
         var ctx = document.getElementById("myChart2");
         var myChar2 = new Chart(ctx, {
             type: 'bar',
-            data: {
-                labels: total_labels,
-                datasets: [],
+            data:{
+                labels: final_totals.map(row => row.owner),
+                datasets: [
+                {
+                    label: 'Acquisitions by year',
+                    data: final_totals.map(row => row.total)
+                }
+            ]
             },
             options: {
                 scales: {
@@ -151,21 +156,6 @@
             }
         });
         
-
-        for (product in totals) {
-            var newDataset = {
-                label: product,
-                data: [],
-                backgroundColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
-                borderColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
-                //backgroundColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
-                //borderColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
-                borderWidth: 3
-                };
-            newDataset.data.push(totals[product]);
-            myChart2.config.data.datasets.push(newDataset);
-        }
-        myChart2.update();
     };
 
 

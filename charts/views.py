@@ -53,7 +53,6 @@ def reporting_sales(request):
     df_labels = sorted(
         [x[0].strftime("%Y-%m-%d") for x in payments.values_list("date").distinct()]
     )
-    total_labels = [x for x in totals.keys()]
 
     for landmark in df_labels:
         for name in receivers:
@@ -63,12 +62,15 @@ def reporting_sales(request):
     for pay in payments:
         receivers[pay.receiver.name][pay.date.strftime("%Y-%m-%d")] += pay.price
         totals[pay.receiver.name] += pay.price
-
+    
+    final_totals = [{"owner":k, "total":v} for k,v in totals.items()]
+ 
     mydict = {
         "receivers": receivers,
         "totals": totals,
         "df_labels": df_labels,
-        "total_labels": total_labels,
+        "final_totals": final_totals,
+
     }
     # breakpoint()
     return render(request, "sales.html", context=mydict)
