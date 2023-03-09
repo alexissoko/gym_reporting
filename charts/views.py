@@ -47,10 +47,9 @@ def reporting_sales(request):
     payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by(
         "-date"
     )
-    # raw_data = serializers.serialize("json", Payment.objects.all())
-    # test_data = payments.values("receiver","date", "price")
 
-    receivers = {pay.receiver.name: {} for pay in payments}
+    receivers = {pay.receiver.name: {}  for pay in payments}
+    totals = {pay.receiver.name: 0  for pay in payments}
     df_labels = sorted(
         [x[0].strftime("%Y-%m-%d") for x in payments.values_list("date").distinct()]
     )
@@ -62,9 +61,11 @@ def reporting_sales(request):
 
     for pay in payments:
         receivers[pay.receiver.name][pay.date.strftime("%Y-%m-%d")] += pay.price
+        totals[pay.receiver.name] += pay.price
 
     mydict = {
         "receivers": receivers,
+        "totals": totals,
         "df_labels": df_labels,
         "labels": list(receivers.keys()),
         "values": list(receivers.values()),
