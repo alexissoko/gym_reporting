@@ -69,6 +69,8 @@ def reporting_sales(request):
         "df_labels": df_labels,
         "labels": list(receivers.keys()),
         "values": list(receivers.values()),
+        "total_labels": list(totals.keys()),
+        "total_values": list(totals.values()),
     }
 
     return render(request, "sales.html", context=mydict)
