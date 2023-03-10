@@ -16,13 +16,10 @@
     <title>charting python</title>
 </head>
 <body>
-    <div class="navbar navbar-default visible-xs">
-        <div class="container-fluid">
-          <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
-            <i class="fa fa-tasks"></i> Choose Customers
-          </button>
-        </div>
-    </div>
+    <h3>
+        {{_("Payments")}}
+        <small class="text-muted">{{_("by clients")}}</small>
+    </h3>
       
     <div class="container-fluid">
       
@@ -86,7 +83,7 @@
         html2canvas(document.getElementById("myHandsomeTable"), {
             onrendered: function(canvas) {
                 var img = canvas.toDataURL(); //image data of canvas
-                var doc = new jsPDF('l', 'mm', [297, 210], true);         
+                var doc = new jsPDF('l', 'mm', [340, 280], true);         
                 doc.addImage(img, 10, 10);
                 doc.save('test.pdf');
                 }
