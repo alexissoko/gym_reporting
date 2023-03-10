@@ -21,11 +21,13 @@ DONE:
 # Dar estilo a la pagina de nuevo pago
 # Fix Payments sheet to not include first data column (type charts.payement)
 # Sales change view to monthly, weekly and daily
+# Add total by owner in Sales
 
 ON PROGRESS:
 #
 
 TODO:
+# Payment search restults linked to inoices
 # Improve sports activites availabilities for new members/Users
 # Translate words to Spanish(every field)
 

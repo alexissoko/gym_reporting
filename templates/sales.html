@@ -43,13 +43,13 @@
                         <br>
                         <canvas id="myChart2"></canvas>
                     </div>
+                    <br>
                     <form method="GET">
                         <div class="date_query">
                             <label for="start">Begining:</label>
                             <input type="date" id="begin" name="begin" format= 'dd/mm/yyyy' startDate= '-3d'>
                             <label for="start">Until:</label>
                             <input type="date" id="until" name="until" format= 'dd/mm/yyyy' startDate= '-3d'>
-                            <br>
                             <button type="submit" class="btn btn-primary">Apply</button>
                             <div id="message"></div>
                         </div>
@@ -137,7 +137,7 @@
                 labels: final_totals.map(row => row.owner),
                 datasets: [
                 {
-                    label: 'Acquisitions by year',
+                    label: 'Total recibido',
                     data: final_totals.map(row => row.total )
                 }
             ]
@@ -187,12 +187,13 @@
         html2canvas(document.getElementById("chart_teiner"), {
             onrendered: function(canvas) {
                 var img = canvas.toDataURL(); //image data of canvas
-                var doc = new jsPDF('l', 'mm', [297, 210], true);         
+                var doc = new jsPDF('l', 'mm', [350, 310], true);         
                 doc.addImage(img, 10, 10);
                 doc.save('test.pdf');
                 }
             });
     };
+
     </script>
     
 </body>
