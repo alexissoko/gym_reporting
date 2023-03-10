@@ -33,21 +33,16 @@
     <div class="container mt-5">
         <h1>{{ _("Payments") }}</h1>
         <hr />
-        <form method="get" class="form-group">{% csrf_token %}
 
-            <select class="form-control" id="exampleFormControlSelect1">
-                {% for pay in payments %}
-                <option>
-                    <div class="card-header">{{pay.date}} {{pay.time}}</div>
-                    <div class="card-body">{{pay.price}}</div>
-                    <div class="card-body">{{pay.receiver.name}}</div>
+        <ul class="list-group">
+          {% for pay in payments %}
+            <li class="list-group-item">
+            <a href="{% url 'reporting_invoice' pk=pay.id %}"> {{pay.id}} {{pay.receiver.name}} {{pay.date}} {{pay.time}}</a>
+            </li>
+            <br>
+          </ul>
+        {% endfor %}
 
-                </option>
-                {% endfor %}
-            </select>
-            <button class="btn btn-primary">Select</button>
-        </form>
-        
     </div>
 
     <!-- Optional JavaScript -->
