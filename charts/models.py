@@ -148,7 +148,7 @@ class Payment(models.Model):
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date) + "_" + str(self.time)
 
-class EXPENSETYPE(models.Model):
+class ExpenseType(models.Model):
     name = models.CharField(max_length=100, help_text=_('First and last name.'), verbose_name=_('name'))
     date = models.DateField(null=True, blank=True, auto_now_add=True, verbose_name=_('date'))
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))

@@ -10,4 +10,6 @@ admin.site.register(Customer)
 admin.site.register(User)
 admin.site.register(Membership)
 admin.site.register(Payment)
+admin.site.register(ExpenseType)
+admin.site.register(Expense)
 admin.site.site_header = 'Pedidos'
