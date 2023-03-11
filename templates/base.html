@@ -35,12 +35,12 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"
                                 aria-labelledby="userMenu">
-                                <a href="{% url 'reporting_sales' %}" class="dropdown-item">Sales</a>
+                                <a href="{% url 'reporting_sales' %}" class="dropdown-item">{{_("Sales")}}</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="{% url 'reporting_payments' %}" class="dropdown-item">Payments</a>
+                                <a href="{% url 'reporting_payments' %}" class="dropdown-item"> {{_("Payments")}}</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{% url 'outbound_reporting' %}" class="dropdown-item">{{_("Expenses")}}</a>
                                 <!--div class="dropdown-divider"></div>
-                                <a href="{% url 'reporting_activities' %}" class="dropdown-item">Activities</a>
-                                <div class="dropdown-divider"></div>
                                 <a href="{% url 'quota-filer' %}" class="dropdown-item" target="_blank">Balances</a-->
                             </div>
                         </li>

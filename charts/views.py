@@ -81,6 +81,54 @@ def reporting_sales(request):
     # breakpoint()
     return render(request, "sales.html", context=mydict)
 
+@login_required
+def reporting_expenses(request):
+    if request.GET.get("begin"):
+        mesh_from = request.GET.get("begin")
+    else:
+        # TODO: default current year fix here
+        mesh_from = "2000-01-01"
+    if request.GET.get("until"):
+        mesh_to = request.GET.get("until")
+    else:
+        mesh_to = timezone.now().strftime("%Y-%m-%d")
+    payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by(
+        "-date"
+    )
+
+    receivers = {pay.receiver.name: {}  for pay in payments}
+    totals = {pay.receiver.name: 0  for pay in payments}
+    sports_slices = {pay.user.activity.sport.name: {}  for pay in payments}
+    totals_sport = {pay.user.activity.sport.name: 0  for pay in payments}
+    df_labels = sorted(
+        [x[0].strftime("%Y-%m-%d") for x in payments.values_list("date").distinct()]
+    )
+
+    for landmark in df_labels:
+        for name in receivers:
+            if landmark not in receivers[name]:
+                receivers[name][landmark] = 0
+
+    for pay in payments:
+        receivers[pay.receiver.name][pay.date.strftime("%Y-%m-%d")] += pay.price
+        totals[pay.receiver.name] += pay.price
+        totals_sport[pay.user.activity.sport.name] += pay.price
+    
+    final_totals = [{"owner":k, "total":v} for k,v in totals.items()]
+    totals_sport = [{"sport":k, "total":v} for k,v in totals_sport.items()]
+ 
+    mydict = {
+        "receivers": receivers,
+        "totals": totals,
+        "df_labels": df_labels,
+        "final_totals": final_totals,
+        "sports_slices": sports_slices,
+        "totals_sport": totals_sport 
+
+    }
+    # breakpoint()
+    return render(request, "expenses.html", context=mydict)
+
 
 @login_required
 def reporting_payments(request):

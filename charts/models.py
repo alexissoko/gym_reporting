@@ -5,7 +5,7 @@ import calendar
 from datetime import datetime
 from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.contenttypes.models import ContentType
 
 
 
@@ -21,6 +21,12 @@ SAFEBOX_CHOICES = (
    ('M', "Moni"),
    ('V', 'Vani'),
    ('B', "Board")
+    )
+
+EXPENCE_CHOICES = (
+   ('TAX', "TAX"),
+   ('SERVICE', 'SERVICE'),
+   ('PRODUCT', "PRODUCT")
     )
 
 # Create your models here.
@@ -142,3 +148,17 @@ class Payment(models.Model):
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date) + "_" + str(self.time)
 
+class Expense(models.Model):
+    class Meta:
+        verbose_name = _('expense')
+        verbose_name_plural = _('expense')
+    name = models.ForeignKey(Activity, on_delete=models.CASCADE, blank=True, null=True)
+    date = models.DateField(default=timezone.now, verbose_name=_('date'))
+    price = models.IntegerField()
+    expense_type = forms.ChoiceField(choices=EXPENSE_CHOICES, widget=forms.RadioSelect())
+    user = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
+    description = models.TextField(null=True, blank=True, verbose_name=_('description'))
+    content_type = ContentType.objects.get_for_model(self)
+
+    def __str__(self) -> str:
+        return self.name +'_'+ _("Taxes") + "_" + str(self.date)
