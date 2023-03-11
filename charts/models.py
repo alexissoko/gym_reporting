@@ -152,7 +152,7 @@ class Expense(models.Model):
     class Meta:
         verbose_name = _('expense')
         verbose_name_plural = _('expense')
-    name = models.ForeignKey(Activity, on_delete=models.CASCADE, blank=True, null=True)
+    name =models.TextField(verbose_name=_('name'))
     date = models.DateField(default=timezone.now, verbose_name=_('date'))
     price = models.IntegerField()
     expense_type = forms.ChoiceField(choices=EXPENSE_CHOICES, widget=forms.RadioSelect())
