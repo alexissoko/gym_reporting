@@ -23,7 +23,7 @@ SAFEBOX_CHOICES = (
    ('B', "Board")
     )
 
-EXPENCE_CHOICES = (
+EXPENSE_CHOICES = (
    ('TAX', "TAX"),
    ('SERVICE', 'SERVICE'),
    ('PRODUCT', "PRODUCT")
