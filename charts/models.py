@@ -148,7 +148,7 @@ class Payment(models.Model):
     def __str__(self) -> str:
         return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date) + "_" + str(self.time)
 
-class EXPENSE_TYPE(models.Model):
+class EXPENSETYPE(models.Model):
     name = models.CharField(max_length=100, help_text=_('First and last name.'), verbose_name=_('name'))
     date = models.DateField(null=True, blank=True, auto_now_add=True, verbose_name=_('date'))
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
@@ -164,7 +164,7 @@ class Expense(models.Model):
     name =models.TextField(verbose_name=_('name'))
     date = models.DateField(default=timezone.now, verbose_name=_('date'))
     price = models.IntegerField()
-    expense_type = models.ForeignKey(EXPENSE_TYPE, on_delete=models.CASCADE)
+    expensetype = models.ForeignKey(EXPENSETYPE, on_delete=models.CASCADE)
     user = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
 
