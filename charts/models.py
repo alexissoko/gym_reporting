@@ -158,7 +158,6 @@ class Expense(models.Model):
     expense_type = forms.ChoiceField(choices=EXPENSE_CHOICES, widget=forms.RadioSelect())
     user = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
-    content_type = ContentType.objects.get_for_model(self)
 
     def __str__(self) -> str:
         return self.name +'_'+ _("Taxes") + "_" + str(self.date)
