@@ -200,7 +200,6 @@
     },
     {
       "model": "charts.payment",
-      "pk": 1,
       "fields": {
         "payment_type": 1,
         "user": 2,
@@ -211,7 +210,6 @@
     },
     {
       "model": "charts.payment",
-      "pk": 1,
       "fields": {
         "payment_type": 2,
         "user": 1,
@@ -222,7 +220,6 @@
     },
     {
       "model": "charts.payment",
-      "pk": 1,
       "fields": {
         "payment_type": 1,
         "user": 2,
@@ -244,7 +241,6 @@
     },
     {
       "model": "charts.expense",
-      "pk": 1,
       "fields": {
         "name": "Dancing rings",
         "price": 2000,
@@ -255,7 +251,6 @@
     },
     {
       "model": "charts.expense",
-      "pk": 1,
       "fields": {
         "name": "Light",
         "price": 4000,
@@ -266,7 +261,6 @@
     },
     {
       "model": "charts.expense",
-      "pk": 1,
       "fields": {
         "name": "Gas",
         "price": 2000,
@@ -277,7 +271,6 @@
     },
     {
       "model": "charts.expense",
-      "pk": 1,
       "fields": {
         "name": "Municipal",
         "price": 2000,
@@ -288,7 +281,6 @@
     },
     {
       "model": "charts.expense",
-      "pk": 1,
       "fields": {
         "name": "Inmobiliario",
         "price": 2000,
