@@ -234,7 +234,7 @@
       "fields": {
         "name": "Pool Chemicals",
         "price": 4000,
-        "expense_type": 1,
+        "expense_type": 0,
         "owner": 1,
         "description": "Cloro y alguicida"
       }
@@ -244,7 +244,7 @@
       "fields": {
         "name": "Dancing rings",
         "price": 2000,
-        "expense_type": 1,
+        "expense_type": 0,
         "owner": 2,
         "description": "40 new 20 inches rings"
       }
@@ -254,7 +254,7 @@
       "fields": {
         "name": "Light",
         "price": 4000,
-        "expense_type": 2,
+        "expense_type": 1,
         "owner": 1,
         "description": "Energy bill"
       }
@@ -264,7 +264,7 @@
       "fields": {
         "name": "Gas",
         "price": 2000,
-        "expense_type": 2,
+        "expense_type": 1,
         "owner": 2,
         "description": "Gas bill"
       }
@@ -274,7 +274,7 @@
       "fields": {
         "name": "Municipal",
         "price": 2000,
-        "expense_type": 3,
+        "expense_type": 2,
         "owner": 1,
         "description": "Local taxes"
       }
@@ -284,7 +284,7 @@
       "fields": {
         "name": "Inmobiliario",
         "price": 2000,
-        "expense_type": 3,
+        "expense_type": 2,
         "owner": 2,
         "description": "State taxes"
       }

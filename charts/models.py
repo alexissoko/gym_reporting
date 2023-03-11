@@ -24,9 +24,9 @@ SAFEBOX_CHOICES = (
     )
 
 EXPENSE_CHOICES = (
-   ('TAX', "TAX"),
-   ('SERVICE', 'SERVICE'),
-   ('PRODUCT', "PRODUCT")
+   ("TAX"),
+   ('SERVICE'),
+   ("PRODUCT")
     )
 
 # Create your models here.
