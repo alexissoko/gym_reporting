@@ -254,7 +254,6 @@
     },
     {
       "model": "charts.expense",
-      "pk": 1,
       "fields": {
         "name": "Pool Chemicals",
         "price": 4000,
