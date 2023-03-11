@@ -164,7 +164,7 @@ class Expense(models.Model):
     name =models.TextField(verbose_name=_('name'))
     date = models.DateField(default=timezone.now, verbose_name=_('date'))
     price = models.IntegerField()
-    expensetype = models.ForeignKey(EXPENSETYPE, on_delete=models.CASCADE)
+    expensetype = models.ForeignKey(ExpenseType, on_delete=models.CASCADE)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
 
