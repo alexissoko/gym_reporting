@@ -22,16 +22,16 @@ DONE:
 # Fix Payments sheet to not include first data column (type charts.payement)
 # Sales change view to monthly, weekly and daily
 # Add total by owner in Sales
+# Agregar grafico por deportes
 
 ON PROGRESS:
 #
 
 TODO:
-# filtrar por clase en el excel
-# Agregar grafico por deportes
-# pagos de hosting
-# gastos servicios (modelos menu)
 # agregar filtro fechas en excel
+# filtrar por clase en el excel
+# gastos servicios (modelos menu)
+# pagos de hosting
 
 # Payment search restults linked to invoices
 # Improve sports activites availabilities for new members/Users

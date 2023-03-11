@@ -240,7 +240,7 @@
       "model": "charts.expensetype",
       "pk": 2,
       "fields": {
-        "name": "Prodcut",
+        "name": "Product",
         "description":"neded resource"
       }
     },
@@ -276,7 +276,7 @@
       "model": "charts.expense",
       "fields": {
         "name": "Light",
-        "price": 4000,
+        "price": 3600,
         "expensetype": 2,
         "owner": 1,
         "description": "Energy bill"
@@ -286,7 +286,7 @@
       "model": "charts.expense",
       "fields": {
         "name": "Gas",
-        "price": 2000,
+        "price": 1200,
         "expensetype": 2,
         "owner": 2,
         "description": "Gas bill"
@@ -296,7 +296,7 @@
       "model": "charts.expense",
       "fields": {
         "name": "Municipal",
-        "price": 2000,
+        "price": 3950,
         "expensetype": 3,
         "owner": 1,
         "description": "Local taxes"
@@ -306,7 +306,7 @@
       "model": "charts.expense",
       "fields": {
         "name": "Inmobiliario",
-        "price": 2000,
+        "price": 1760,
         "expensetype": 3,
         "owner": 2,
         "description": "State taxes"

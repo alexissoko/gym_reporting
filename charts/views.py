@@ -92,14 +92,14 @@ def reporting_expenses(request):
         mesh_to = request.GET.get("until")
     else:
         mesh_to = timezone.now().strftime("%Y-%m-%d")
-    payments = Payment.objects.filter(date__range=[mesh_from, mesh_to]).order_by(
+    payments = Expense.objects.filter(date__range=[mesh_from, mesh_to]).order_by(
         "-date"
     )
 
-    receivers = {pay.receiver.name: {}  for pay in payments}
-    totals = {pay.receiver.name: 0  for pay in payments}
-    sports_slices = {pay.user.activity.sport.name: {}  for pay in payments}
-    totals_sport = {pay.user.activity.sport.name: 0  for pay in payments}
+    receivers = {pay.expensetype.name: {}  for pay in payments}
+    totals = {pay.expensetype.name: 0  for pay in payments}
+    sports_slices = {pay.owner.name: {}  for pay in payments}
+    totals_sport = {pay.owner.name: 0  for pay in payments}
     df_labels = sorted(
         [x[0].strftime("%Y-%m-%d") for x in payments.values_list("date").distinct()]
     )
@@ -110,9 +110,9 @@ def reporting_expenses(request):
                 receivers[name][landmark] = 0
 
     for pay in payments:
-        receivers[pay.receiver.name][pay.date.strftime("%Y-%m-%d")] += pay.price
-        totals[pay.receiver.name] += pay.price
-        totals_sport[pay.user.activity.sport.name] += pay.price
+        receivers[pay.expensetype.name][pay.date.strftime("%Y-%m-%d")] += pay.price
+        totals[pay.expensetype.name] += pay.price
+        totals_sport[pay.owner.name] += pay.price
     
     final_totals = [{"owner":k, "total":v} for k,v in totals.items()]
     totals_sport = [{"sport":k, "total":v} for k,v in totals_sport.items()]
