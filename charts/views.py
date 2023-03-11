@@ -50,6 +50,8 @@ def reporting_sales(request):
 
     receivers = {pay.receiver.name: {}  for pay in payments}
     totals = {pay.receiver.name: 0  for pay in payments}
+    sports_slices = {pay.user.activity.sport.name: {}  for pay in payments}
+    totals_sport = {pay.user.activity.sport.name: 0  for pay in payments}
     df_labels = sorted(
         [x[0].strftime("%Y-%m-%d") for x in payments.values_list("date").distinct()]
     )
@@ -62,14 +64,18 @@ def reporting_sales(request):
     for pay in payments:
         receivers[pay.receiver.name][pay.date.strftime("%Y-%m-%d")] += pay.price
         totals[pay.receiver.name] += pay.price
+        totals_sport[pay.user.activity.sport.name] += pay.price
     
     final_totals = [{"owner":k, "total":v} for k,v in totals.items()]
+    totals_sport = [{"sport":k, "total":v} for k,v in totals_sport.items()]
  
     mydict = {
         "receivers": receivers,
         "totals": totals,
         "df_labels": df_labels,
         "final_totals": final_totals,
+        "sports_slices": sports_slices,
+        "totals_sport": totals_sport 
 
     }
     # breakpoint()

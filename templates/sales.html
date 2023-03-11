@@ -42,6 +42,8 @@
                         <canvas id="myChart"></canvas>
                         <br>
                         <canvas id="myChart2"></canvas>
+                        <br>
+                        <canvas id="myChart3"></canvas>
                     </div>
                     <br>
                     <form method="GET">
@@ -75,6 +77,8 @@
     const totals = {{totals|safe}};
     const df_labels = {{df_labels|safe}};
     const final_totals = {{final_totals|safe}};
+    const sports_slices = {{sports_slices|safe}};
+    const totals_sport = {{totals_sport|safe}};
     const colors = [
                 'rgba(134, 99, 132, 0.5)',
                 'rgba(154, 162, 235, 0.5)',
@@ -130,6 +134,7 @@
         }
         myChart.update();
 
+
         var ctx = document.getElementById("myChart2");
         var myChar2 = new Chart(ctx, {
             type: 'bar',
@@ -156,6 +161,33 @@
                 }
             }
         });
+        var ctx = document.getElementById("myChart3");
+        var myChar3 = new Chart(ctx, {
+            type: 'bar',
+            data:{
+                labels: totals_sport.map(row => row.sport),
+                datasets: [
+                {
+                    label: 'Total recibido',
+                    data: totals_sport.map(row => row.total )
+                }
+            ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: false,
+                    },
+                    y: {
+                        stacked: false,
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    },
+                }
+            }
+        });
+        
         
     };
 

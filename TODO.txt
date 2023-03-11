@@ -27,7 +27,13 @@ ON PROGRESS:
 #
 
 TODO:
-# Payment search restults linked to inoices
+# filtrar por clase en el excel
+# Agregar grafico por deportes
+# pagos de hosting
+# gastos servicios (modelos menu)
+# agregar filtro fechas en excel
+
+# Payment search restults linked to invoices
 # Improve sports activites availabilities for new members/Users
 # Translate words to Spanish(every field)
 
