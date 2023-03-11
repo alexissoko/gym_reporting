@@ -230,6 +230,7 @@
     },
     {
       "model": "charts.expensetype",
+      "pk": 1,
       "fields": {
         "payment_type": "Service",
         "description":"needed logistic or intangible"
@@ -237,6 +238,7 @@
     },
     {
       "model": "charts.expensetype",
+      "pk": 2,
       "fields": {
         "payment_type": "Prodcut",
         "description":"neded resource"
@@ -244,6 +246,7 @@
     },
     {
       "model": "charts.expensetype",
+      "pk": 3,
       "fields": {
         "payment_type": "Tax",
         "description":"State fees"
