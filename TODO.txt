@@ -23,6 +23,8 @@ DONE:
 # Sales change view to monthly, weekly and daily
 # Add total by owner in Sales
 # Agregar grafico por deportes
+# gastos servicios (modelos menu)
+# Payment search restults linked to invoices
 
 ON PROGRESS:
 #
@@ -30,14 +32,11 @@ ON PROGRESS:
 TODO:
 # agregar filtro fechas en excel
 # filtrar por clase en el excel
-# gastos servicios (modelos menu)
-# pagos de hosting
 
-# Payment search restults linked to invoices
 # Improve sports activites availabilities for new members/Users
 # Translate words to Spanish(every field)
 
 
 
 TARGET DATE DEMO
-# 10 de Marzo Demostracion.
+# pagos de hosting
