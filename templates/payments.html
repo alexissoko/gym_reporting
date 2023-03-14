@@ -51,12 +51,13 @@
                         
                     </form>
                     <br>
-                    <div>
+                    <div id="chart_teiner">
                         <div id="myHandsomeTable"></div>
                     </div>
                     <br>
                     <button onclick="saveAsPDF();" class="btn btn-primary">save as pdf</button>
                 </div>
+
                 <a href="{% url 'post_new' %}" class="top-menu" sizes="HeightxWidth|any"> 
                     {% include './icons/file-earmark-plus.svg' %}
                 </a>
@@ -83,6 +84,7 @@
         rowHeaders: true,
         colHeaders: labels,
         filters: true,
+        dropdownMenu: ['filter_by_condition', 'filter_action_bar'],
         height: 'auto',
         width: 'auto',
         licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
@@ -91,7 +93,7 @@
 
     function saveAsPDF() {
         //html2canvas(document.getElementById("myChart"), {
-        html2canvas(document.getElementById("myHandsomeTable"), {
+        html2canvas(document.getElementById("chart_teiner"), {
             onrendered: function(canvas) {
                 var img = canvas.toDataURL(); //image data of canvas
                 var doc = new jsPDF('l', 'mm', [340, 280], true);         
