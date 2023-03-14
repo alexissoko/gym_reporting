@@ -18,39 +18,9 @@
     <div class="container-fluid">
       
         <div class="row">
-      
-          <!-- filter sidebar -->
-            <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
-
-                <form method="GET">
-                    <div id="group-1">
-                        {% for k, v in sold_objs.items %}
-                        <div class="form-check">
-                            <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="boxes" value="">{{ k }}
-                            </label>
-                        </div>    
-                        {% endfor %}
-                    </div>    
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
             <!-- table container -->
             <div class="col-sm-9">
-        
                 <div class="card">
-                    <form method="GET">
-                        <div class="date_query">
-                            <label for="start">Begining:</label>
-                            <input type="date" id="begin" name="begin" format= 'dd/mm/yyyy' startDate= '-3d'>
-                            <label for="start">Until:</label>
-                            <input type="date" id="until" name="until" format= 'dd/mm/yyyy' startDate= '-3d'>
-                            <button type="submit" class="btn btn-primary">Apply</button>
-                            <div id="message"></div>
-                        </div>
-                        
-                    </form>
-                    <br>
                     <div id="chart_teiner">
                         <div id="myHandsomeTable"></div>
                     </div>
