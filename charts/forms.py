@@ -1,7 +1,9 @@
 from django.forms import ModelForm
-# from .models import Sale
 
-# class SaleForm(ModelForm):
-#     class Meta:
-#         model = Sale
-#         fields = ['invoice', 'date', 'quantity', 'price']
+from . import models
+
+class PaymentForm(ModelForm):
+    class Meta:
+        model = models.Payment
+        fields = ['date', 'time', 'payment_type', 'user' , 'receiver', 'description', 'price', 'quota_number', 'units']
+ 
