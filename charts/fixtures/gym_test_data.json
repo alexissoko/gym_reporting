@@ -169,11 +169,22 @@
       }
     },
     {
+      "model": "charts.membership",
+      "pk": 1,
+      "fields": {
+        "activity": 1,
+        "fee": false,
+        "price": 2000,
+        "user": 2,
+        "description":"None"
+        
+      }
+    },
+    {
       "model": "charts.typepayment",
       "pk": 1,
       "fields": {
         "payment_type": "transfer",
-        "receiver": 2,
         "membership": 1,
         "description":"None"
       }
@@ -183,36 +194,122 @@
       "pk": 2,
       "fields": {
         "payment_type": "cash",
-        "receiver": 2,
         "membership": 1,
         "description":"None"
       }
     },
     {
       "model": "charts.payment",
-      "pk": 1,
       "fields": {
         "payment_type": 1,
         "user": 2,
-        "price": 2000
+        "price": 2000,
+        "units": 2,
+        "receiver": 3
       }
     },
     {
       "model": "charts.payment",
-      "pk": 2,
-      "fields": {
-        "payment_type": 1,
-        "user": 2,
-        "price": 2000
-      }
-    },
-    {
-      "model": "charts.payment",
-      "pk": 3,
       "fields": {
         "payment_type": 2,
         "user": 1,
-        "price": 2000
+        "price": 4500,
+        "units": 1,
+        "receiver": 3
+      }
+    },
+    {
+      "model": "charts.payment",
+      "fields": {
+        "payment_type": 1,
+        "user": 2,
+        "price": 2000,
+        "units": 2,
+        "receiver": 2
+      }
+    },
+    {
+      "model": "charts.expensetype",
+      "pk": 1,
+      "fields": {
+        "name": "Service",
+        "description":"needed logistic or intangible"
+      }
+    },
+    {
+      "model": "charts.expensetype",
+      "pk": 2,
+      "fields": {
+        "name": "Product",
+        "description":"neded resource"
+      }
+    },
+    {
+      "model": "charts.expensetype",
+      "pk": 3,
+      "fields": {
+        "name": "Tax",
+        "description":"State fees"
+      }
+    },
+    {
+      "model": "charts.expense",
+      "fields": {
+        "name": "Pool Chemicals",
+        "price": 4000,
+        "expensetype": 1,
+        "owner": 1,
+        "description": "Cloro y alguicida"
+      }
+    },
+    {
+      "model": "charts.expense",
+      "fields": {
+        "name": "Dancing rings",
+        "price": 2000,
+        "expensetype": 1,
+        "owner": 2,
+        "description": "40 new 20 inches rings"
+      }
+    },
+    {
+      "model": "charts.expense",
+      "fields": {
+        "name": "Light",
+        "price": 3600,
+        "expensetype": 2,
+        "owner": 1,
+        "description": "Energy bill"
+      }
+    },
+    {
+      "model": "charts.expense",
+      "fields": {
+        "name": "Gas",
+        "price": 1200,
+        "expensetype": 2,
+        "owner": 2,
+        "description": "Gas bill"
+      }
+    },
+    {
+      "model": "charts.expense",
+      "fields": {
+        "name": "Municipal",
+        "price": 3950,
+        "expensetype": 3,
+        "owner": 1,
+        "description": "Local taxes"
+      }
+    },
+    {
+      "model": "charts.expense",
+      "fields": {
+        "name": "Inmobiliario",
+        "price": 1760,
+        "expensetype": 3,
+        "owner": 2,
+        "description": "State taxes"
       }
     }
   ]

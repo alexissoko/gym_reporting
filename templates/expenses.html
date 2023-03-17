@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>charting python</title>
+</head>
+<body>
+    <h3>
+        {{_("Expenses balance")}}
+        <small class="text-muted">{{_("by types and owners")}}</small>
+    </h3>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+          <!-- filter sidebar -->
+            <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
+
+                <form method="GET">
+                    <div id="group-1">
+                        {% for k, v in sold_objs.items %}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="boxes" value="">{{ k }}
+                            </label>
+                        </div>    
+                        {% endfor %}
+                    </div>    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <!-- table container -->
+            <div class="col-sm-9">
+        
+                <div class="card">
+                    <form method="GET">
+                        <div class="date_query">
+                            <label for="start">Begining:</label>
+                            <input type="date" id="begin" name="begin" format= 'dd/mm/yyyy' startDate= '-3d'>
+                            <label for="start">Until:</label>
+                            <input type="date" id="until" name="until" format= 'dd/mm/yyyy' startDate= '-3d'>
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                            <div id="message"></div>
+                        </div>
+                        
+                    </form>
+                    <br>
+                    <div id="chart_teiner">
+                        <canvas id="myChart"></canvas>
+                        <br>
+                        <canvas id="myChart2"></canvas>
+                        <br>
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                    <br>
+                    <button onclick="saveAsPDF();" class="btn btn-primary">save as pdf</button>
+                </div>
+
+            </div>
+        </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
+
+    <script>
+        
+        
+    const receivers = {{receivers|safe}};
+    const totals = {{totals|safe}};
+    const df_labels = {{df_labels|safe}};
+    const final_totals = {{final_totals|safe}};
+    const sports_slices = {{sports_slices|safe}};
+    const totals_sport = {{totals_sport|safe}};
+    const colors = [
+                'rgba(134, 99, 132, 0.5)',
+                'rgba(154, 162, 235, 0.5)',
+                'rgba(33, 350, 135, 0.4)',
+                'rgb(60, 179, 113, 0.5)',
+                'rgba(25, 206, 86, 0.6)',
+                'rgba(45, 192, 192, 0.2)',
+                'rgba(253, 102, 255, 0.6)',
+                'rgba(153, 200, 81, 0.7)',
+                'rgba(155, 159, 64, 0.2)',
+                'rgba(15, 99, 99, 0.6)',
+                'rgba(70, 60, 35, 0.4)'
+            ]
+
+
+    window.onload=function(){
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: df_labels,
+                datasets: []
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    },
+                }
+            }
+        });
+
+        for (product in receivers) {
+            var newDataset = {
+                label: product,
+                data: [],
+                backgroundColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
+                borderColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
+                //backgroundColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
+                //borderColor: colors[Math.floor((Math.random() * colors.length)%colors.length)],
+                borderWidth: 3
+                };
+                for (value in receivers[product]) {
+                    newDataset.data.push(receivers[product][value]);
+                }
+                myChart.config.data.datasets.push(newDataset);
+        }
+        myChart.update();
+
+
+        var ctx = document.getElementById("myChart2");
+        var myChar2 = new Chart(ctx, {
+            type: 'bar',
+            data:{
+                labels: final_totals.map(row => row.owner),
+                datasets: [
+                {
+                    label: 'Total recibido',
+                    data: final_totals.map(row => row.total ),
+                    backgroundColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
+                }
+            ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: false,
+                    },
+                    y: {
+                        stacked: false,
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    },
+                }
+            }
+        });
+        var ctx = document.getElementById("myChart3");
+        var myChar3 = new Chart(ctx, {
+            type: 'bar',
+            data:{
+                labels: totals_sport.map(row => row.sport),
+                datasets: [
+                {
+                    label: 'Total recibido',
+                    data: totals_sport.map(row => row.total),
+                    backgroundColor: colors.splice(colors.length * Math.random() | 0, 1)[0],
+                }
+            ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: false,
+                    },
+                    y: {
+                        stacked: false,
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    },
+                }
+            }
+        });
+        
+        
+    };
+
+
+    let startInput = document.getElementById('begin');
+    let endInput = document.getElementById('until');
+    let messageDiv = document.getElementById('message');
+    let submitButton = document.getElementById('submit');
+
+    let compare = () => {
+        let startValue = (new Date(startInput.value)).getTime();
+        let endValue = (new Date(endInput.value)).getTime();
+
+        if (endValue < startValue) {
+        messageDiv.innerHTML = 'Fecha de inicio debe ser mas antigua que la del final!';
+        submitButton.disabled = true;
+        } else {
+        messageDiv.innerHTML = '';
+        submitButton.disabled = false;
+        }
+    };
+
+    startInput.addEventListener('change', compare);
+    endInput.addEventListener('change', compare);
+
+
+    function saveAsPDF() {
+        //html2canvas(document.getElementById("myChart"), {
+        html2canvas(document.getElementById("chart_teiner"), {
+            onrendered: function(canvas) {
+                var img = canvas.toDataURL(); //image data of canvas
+                var doc = new jsPDF('l', 'mm', [400, 350], true);         
+                doc.addImage(img, 10, 10);
+                doc.save('test.pdf');
+                }
+            });
+    };
+
+    </script>
+    
+</body>
+</html>
+
+{% endblock %}

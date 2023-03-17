@@ -19,15 +19,6 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from slick_reporting.views import (
-    SlickReportViewBase,
-    SlickReportView as OriginalReportView,
-)
-from slick_reporting.fields import SlickReportField, Sum
-
-# from chartjs.views.lines import BaseLineChartView
-# from chartjs.views.lines import BaseLineChartView
-
 
 def home(request):
     return render(request, "welcome.html")
@@ -242,4 +233,3 @@ def payment_search(request, pk=None):
             'payments': payments,
         }
         return render(request, 'payment_search.html', context)
-# Create your models here.
