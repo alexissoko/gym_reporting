@@ -36,8 +36,6 @@ LOGIN_URL="/"
 
 INSTALLED_APPS = [
     'charts',
-    'slick_reporting',
-    'crispy_forms',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
