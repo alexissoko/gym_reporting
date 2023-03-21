@@ -20,7 +20,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 other_BASE_DIR = Path(__file__).resolve()
 
 
@@ -29,14 +29,17 @@ SECRET_KEY = 'django-insecure-cxw#+ws0md9u0$tc8#atql!duc1d0+u*ggktr76_a$icwc*vp!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["tautologyco.pythonanywhere.com"]
 
 
 LOGIN_URL="/"
+LOGIN_REDIRECT_URL="/"
 
 INSTALLED_APPS = [
     'charts',
-    'jazzmin',
+    # 'jazzmin',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +62,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project.urls'
-
+STATIC_ROOT = "/home/tautologyco/gym_reporting/static"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -133,13 +136,6 @@ STATIC_URL = 'static/'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-import os
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = "/home/alexissoko/myproject/static"
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),)
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTINGS: Dict[str, Any] = {

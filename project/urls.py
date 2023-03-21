@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from charts import views
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
@@ -25,4 +27,4 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('charts.urls'))
     
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
