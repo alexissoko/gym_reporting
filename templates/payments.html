@@ -31,6 +31,7 @@
                 <a href="{% url 'post_new' %}" class="top-menu" sizes="HeightxWidth|any"> 
                 New
                 </a>
+                <br>
                 <a href="{% url 'payment_search' %}" class="top-menu">
                 Search
                 </a>
@@ -57,6 +58,10 @@
         dropdownMenu: ['filter_by_condition', 'filter_action_bar'],
         height: 'auto',
         width: 'auto',
+        hiddenColumns: {
+            columns: [0, 1],
+            indicators: true,
+        },
         licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
     });
     

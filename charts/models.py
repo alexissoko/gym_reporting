@@ -118,11 +118,11 @@ class TypePayment(models.Model):
     payment_type = models.CharField(max_length=100, null=True)
     # payment_type = forms.ChoiceField(choices=PAYMENT_CHOICES, widget=forms.RadioSelect())
 
-    membership = models.ForeignKey(
-        Membership, on_delete=models.CASCADE, blank=True, null=True
-    )
+    # membership = models.ForeignKey(
+    #     Membership, on_delete=models.CASCADE, blank=True, null=True
+    # )
     description = models.TextField(null=True, blank=True, verbose_name=_('description'))
-    membership.quantity = 1
+    # membership.quantity = 1
 
     def __str__(self) -> str:
         return self.payment_type
@@ -146,7 +146,7 @@ class Payment(models.Model):
     quota_number = models.TextField(null=True, blank=True)#choices=MONTHLY_QUOTAS)
 
     def __str__(self) -> str:
-        return self.user.name.replace(" ", "") + "_" + self.payment_type.membership.activity.name + "_" + str(self.date) + "_" + str(self.time)
+        return self.user.name.replace(" ", "") + "_" + str(self.date) + "_" + str(self.time)
 
 class ExpenseType(models.Model):
     name = models.CharField(max_length=100, help_text=_('First and last name.'), verbose_name=_('name'))
