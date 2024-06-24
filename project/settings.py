@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-cxw#+ws0md9u0$tc8#atql!duc1d0+u*ggktr76_a$icwc*vp!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["tautologyco.pythonanywhere.com"]
+ALLOWED_HOSTS = ["tautologyco.pythonanywhere.com", "127.0.0.1"]
 
 
 LOGIN_URL="/"
